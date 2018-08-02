@@ -1,0 +1,35 @@
+{
+  "name": "saffroncode-js",
+  "version": "1.0.0",
+  "description": "Package of optimised react components and javascript functions for developers ♫♪",
+  "main": "saffroncode.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SaffronCode/SaffronCodeReact.git"
+  },
+  "keywords": [
+    "react",
+    "javascript",
+    "reactjs",
+    "preloader",
+    "animation",
+    "saffroncode",
+    "arabic",
+    "persian",
+    "rtl",
+    "regex",
+    "string"
+  ],
+  "author": "SaffronCode Co <ebrahimsepehr@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/SaffronCode/SaffronCodeReact/issues"
+  },
+  "homepage": "https://github.com/SaffronCode/SaffronCodeReact#readme"
+}
