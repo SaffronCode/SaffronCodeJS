@@ -8,6 +8,9 @@ export default class Input extends Component {
         type:"text",
         value:"",
         name:'',
+        className:"",
+        placeholder:null,
+        pattern:"",
         /*defaultChecked:false,
         checked:false,*/
     }
@@ -25,6 +28,10 @@ export default class Input extends Component {
     onChange(item)
     {
         item.target.value = this.NumberChange(this.correctString(item.target.value));
+        if(this.props.pattern!=="")
+        {
+            item.target.value = String(item.target.value).match(this.props.pattern);
+        }
         this.state.onChange(item);
     }
 
@@ -61,7 +68,9 @@ export default class Input extends Component {
             type={currentType} 
             value={this.state.value} 
             inputmode={inputmode} 
+            className={this.state.className} 
             defaultChecked={this.state.defaultChecked} 
+            placeholder={this.state.placeholder} 
             checked={this.state.checked}/>
     )
   }
