@@ -1,6 +1,6 @@
 {
-  "name": "saffroncode-js",
-  "version": "1.0.0",
+  "name": "saffroncodejs",
+  "version": "1.0.2",
   "description": "Package of optimised react components and javascript functions for developers ♫♪",
   "main": "saffroncode.js",
   "directories": {
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SaffronCode/SaffronCodeReact.git"
+    "url": "git+https://github.com/SaffronCode/SaffronCodeJS.git"
   },
   "keywords": [
     "react",
@@ -29,7 +29,10 @@
   "author": "SaffronCode Co <ebrahimsepehr@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/SaffronCode/SaffronCodeReact/issues"
+    "url": "https://github.com/SaffronCode/SaffronCodeJS/issues"
   },
-  "homepage": "https://github.com/SaffronCode/SaffronCodeReact#readme"
+  "homepage": "https://github.com/SaffronCode/SaffronCodeJS#readme",
+  "dependencies": {
+    "saffroncodejs-preloader": "^1.0.0"
+  }
 }
