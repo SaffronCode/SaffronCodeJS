@@ -1,5 +1,5 @@
 
-export default class SimplePage{
+export default class PageData{
     constructor(URL,PageName,Component)
     {
         this.url = URL ;
