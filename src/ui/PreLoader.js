@@ -16,12 +16,13 @@ export default class Preloader extends Component {
         preLoaderColor = newColor ;
     }
 
-    componentDidMount() {
+    onCanvasCreated(canvas) {
         //Start animation
         /**@type {canvas} */
         this.rad = 0 ;
-        this.ctx = this.refs.canvas.getContext('2d');
+        this.ctx = canvas.getContext('2d');
         
+        this.animate();
         this.intervalId = setInterval(this.animate.bind(this),10);
     }
     componentWillUnmount(){
@@ -49,7 +50,7 @@ export default class Preloader extends Component {
     
     render() {
         return (
-            <canvas style={{width:100,height:100,margin:'auto',display:'block'}} ref="canvas" width={Width} height={Height}/>
+            <canvas style={{width:100,height:100,margin:'auto',display:'block'}} ref={this.onCanvasCreated.bind(this)} width={Width} height={Height}/>
         );
     }
 };
