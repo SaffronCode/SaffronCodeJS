@@ -1,12 +1,15 @@
 import Preloader from './ui/PreLoader'
-import StringFunctions from './libs/StringFunctions';
+//import StringFunctions from './libs/StringFunctions';
+import * as React from 'react';
+
+interface SaffronInterfase{
+    Preloader:any
+}
+
+var SaffronCode:SaffronInterfase = {
+    Preloader:Preloader
+};
 
 
-var SaffronCode = {};
-
-
-
-SaffronCode.Preloader = Preloader;
-SaffronCode.StringFunctions = StringFunctions ;
 
 export default SaffronCode ;

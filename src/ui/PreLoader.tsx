@@ -5,10 +5,10 @@ var preLoaderColor = "#777777ff",
     Height = 200 ,
     AnimSpeed = 0.2 ;
 
-export default class Preloader extends Component {
- 
+export default class Preloader extends Component<any, any> {
 
-    static setColor(newColor="#777777ff",width=200,height=200,animSpeed=0.2)
+
+    static setColor(newColor:string="#777777ff",width:number=200,height:number=200,animSpeed:number=0.2)
     {
         Width = width ;
         Height = height ;
@@ -16,7 +16,11 @@ export default class Preloader extends Component {
         preLoaderColor = newColor ;
     }
 
-    onCanvasCreated(canvas) {
+    rad:number = 0 ;
+    ctx:any = null ;
+    intervalId:number = 0 ;
+
+    onCanvasCreated(canvas:any) {
         //Start animation
         /**@type {canvas} */
         this.rad = 0 ;
@@ -32,7 +36,7 @@ export default class Preloader extends Component {
     animate()
     {
         /**@type {canvas} */
-        let canvas = this.ctx ;
+        let canvas:any = this.ctx ;
 
         canvas.clearRect(0,0,Width,Height);
 

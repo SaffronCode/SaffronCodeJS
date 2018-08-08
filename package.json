@@ -3,8 +3,7 @@
 	"version": "1.1.5",
 	"description": "Package of optimised react components and javascript functions for developers ♫♪",
 	"main": "./lib/SaffronCode.js",
-    "types": "./lib/SaffronCode.d.ts",
-
+	"types": "./lib/SaffronCode.d.ts",
 	"directories": {
 		"doc": "doc"
 	},
@@ -52,5 +51,9 @@
 	"bugs": {
 		"url": "https://github.com/SaffronCode/SaffronCodeReact/issues"
 	},
-	"homepage": "https://github.com/SaffronCode/SaffronCodeReact#readme"
+	"homepage": "https://github.com/SaffronCode/SaffronCodeReact#readme",
+	"dependencies": {
+		"@types/react": "^16.4.8",
+		"@types/react-dom": "^16.0.7"
+	}
 }
