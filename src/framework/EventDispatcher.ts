@@ -1,4 +1,6 @@
+
 class EventDispatcher{
+    listners:any = {};
     constructor()
     {
         this.listners = {} ;
@@ -9,7 +11,7 @@ class EventDispatcher{
      * @param {function} trigger
      * @return {void}
     */
-    addEventListner(type,trigger)
+    addEventListner(type:string,trigger:(eventType?:string,param?:any)=>any):void
     {
         if(trigger===undefined)
         {
@@ -25,7 +27,7 @@ class EventDispatcher{
     }
     
     /**@description Remove this function from the current listnere type */
-    removeEventListner(type,trigger)
+    removeEventListner(type:string,trigger:(eventType?:string,param?:any)=>any):void
     {
         if(trigger===undefined)
         {
@@ -45,12 +47,12 @@ class EventDispatcher{
      * @param {string} type
      * @param {any}
      */
-    dispatchEvent(type,param=null)
+    dispatchEvent(type:string,param:any=null):void
     {
         console.log("* dispatched : "+type);
         if(this.listners[type]!==undefined)
         {
-            this.listners[type].forEach(function(item){item(type,param)})
+            this.listners[type].forEach((item:(eventType?:string,param?:any)=>any)=>{item(type,param)})
         }
     }
 }
