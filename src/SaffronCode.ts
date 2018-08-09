@@ -3,6 +3,7 @@ import Input from './ui/Input';
 //import StringFunctions from './libs/StringFunctions';
 import * as React from 'react';
 import EventDispatcher from './framework/EventDispatcher';
+import PageManager from './framework/pageManager/PageManager';
 
 
 
@@ -19,12 +20,15 @@ var ui:uiModel = {
 
 
 interface frameworkModel{
-    EventDispatcher:typeof EventDispatcher
+    EventDispatcher:typeof EventDispatcher,
+    PageManager:typeof PageManager
 }
 
 var framework:frameworkModel = {
-    EventDispatcher:EventDispatcher
+    EventDispatcher:EventDispatcher,
+    PageManager:PageManager
 }
-var disp=new framework.EventDispatcher();
+
+
 
 export {ui,framework} ;

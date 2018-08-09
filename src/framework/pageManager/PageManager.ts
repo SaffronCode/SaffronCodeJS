@@ -5,25 +5,44 @@ import EventDispatcher from "../EventDispatcher";
 //import JSFunctions from "../libs/JSFunctions" ;
 
 const maximomAcceptableParamsOnURL = 10 ;
+var allPages:PageData[] = [] ;
 
-var PageManager = {};
-PageManager.dispatcher = new EventDispatcher();
-PageManager.PAGE_CHANGED = "PAGE_CHANGED" ;
+interface PageManagerModel {
+    dispatcher:EventDispatcher,
+    PAGE_CHANGED:string,
+    routerParamList:string,
+    changePage:typeof changePage,
+    decodePageParams:typeof decodePageParams,
+    getCurrentPage:typeof getCurrentPage,
+    registerPage:typeof registerPage,
+}
 
-PageManager.routerParamList = '' ;
-for(var i = 0 ; i<maximomAcceptableParamsOnURL ; i++)
+var PageManager:PageManagerModel = {
+    dispatcher:new EventDispatcher(),
+    PAGE_CHANGED : "PAGE_CHANGED",
+    routerParamList:'',
+    changePage:changePage,
+    decodePageParams:decodePageParams,
+    getCurrentPage:getCurrentPage,
+    registerPage:registerPage,
+};
+
+
+for(var i:number = 0 ; i<maximomAcceptableParamsOnURL ; i++)
 {
     PageManager.routerParamList+='/:p'+i+'?';
 }
 
 ///Page list ↓
-PageManager.allPages = [] ;
-PageManager.menuPages = [] ;
 
+function registerPage(page:PageData):void
+{
+    allPages.push(page);
+}
 
 var lastPage = new PageData();
 
-PageManager.changePage = function(targetPage,pageData=[])
+function changePage(targetPage:PageData,pageData:any[]=[]):void
 {
     if(targetPage!==null)
     {
@@ -37,7 +56,7 @@ PageManager.changePage = function(targetPage,pageData=[])
 }
 
 /**@description pass the constructor's props to the function and retrive parameters list */
-PageManager.decodePageParams = function(props={})
+function decodePageParams(props:any={}):any[]|null
 {
     if(
         props !== undefined &&
@@ -56,20 +75,21 @@ PageManager.decodePageParams = function(props={})
         }
         return params ;
     }
+    return null ;
 }
 
 /**@return {PageData} */
-PageManager.getCurrentPage = function()
+function getCurrentPage():PageData|null
 {
     /**@type {string} */
     let currentLocation = window.location.href.toLowerCase();
-    for(var i = 0 ; i<PageManager.allPages.length ; i++)
+    for(var i = 0 ; i<allPages.length ; i++)
     {
         /**@type {string} */
-        let testLoc = PageManager.allPages[i].url ;
+        let testLoc = allPages[i].url ;
         if(currentLocation.indexOf(testLoc)!==-1)
         {
-            return PageManager.allPages[i] ;
+            return allPages[i] ;
         }
     }
     return null;
