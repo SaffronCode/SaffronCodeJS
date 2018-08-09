@@ -1,6 +1,19 @@
 import React, { Component } from 'react';
 
-export default class Input extends Component {
+interface InputProps {
+    onChange:(inputTarget:any)=>null;
+    id:string,
+    type:string,
+    value:string,
+    name:string,
+    className:string,
+    placeholder:string,
+    pattern:string,
+    defaultChecked:boolean,
+    checked:boolean
+}
+
+export default class Input extends Component<InputProps,InputProps> {
 
     static defaultProps = {
         onChange:function(){},
@@ -15,17 +28,17 @@ export default class Input extends Component {
         checked:false,*/
     }
 
-    constructor(props) {
+    constructor(props:InputProps) {
         super(props);
         this.state = props ;
     }
 
-    componentWillReceiveProps(props)
+    componentWillReceiveProps(props:InputProps)
     {
         this.setState(props);
     }
     
-    onChange(item)
+    onChange(item:any)
     {
         item.target.value = this.NumberChange(this.correctString(item.target.value));
         if(this.props.pattern!=="")
@@ -51,11 +64,9 @@ export default class Input extends Component {
     }
 
   render() {
-      let inputmode = null ;
       let currentType = this.state.type ;
       if(currentType==='number')
       {
-            //inputmode = "numeric";
             currentType = 'text';
       }
       console.log("this.state.checked : ",this.state.checked);
@@ -67,7 +78,6 @@ export default class Input extends Component {
             id={this.state.id} 
             type={currentType} 
             value={this.state.value} 
-            inputmode={inputmode} 
             className={this.state.className} 
             defaultChecked={this.state.defaultChecked} 
             placeholder={this.state.placeholder} 
