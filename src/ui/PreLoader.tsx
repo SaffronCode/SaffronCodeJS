@@ -5,10 +5,11 @@ var preLoaderColor = "#777777ff",
     Height = 200 ,
     AnimSpeed = 0.2 ;
 
-export default class Preloader extends Component {
- 
 
-    static setColor(newColor="#777777ff",width=200,height=200,animSpeed=0.2)
+class Preloader extends Component<null> {
+
+
+    static setUp(newColor:string="#777777ff",width:number=200,height:number=200,animSpeed:number=0.2)
     {
         Width = width ;
         Height = height ;
@@ -16,12 +17,17 @@ export default class Preloader extends Component {
         preLoaderColor = newColor ;
     }
 
-    componentDidMount() {
+    rad:number = 0 ;
+    ctx:any = null ;
+    intervalId:number = 0 ;
+
+    onCanvasCreated(canvas:any) {
         //Start animation
         /**@type {canvas} */
         this.rad = 0 ;
-        this.ctx = this.refs.canvas.getContext('2d');
+        this.ctx = canvas.getContext('2d');
         
+        this.animate();
         this.intervalId = setInterval(this.animate.bind(this),10);
     }
     componentWillUnmount(){
@@ -31,7 +37,7 @@ export default class Preloader extends Component {
     animate()
     {
         /**@type {canvas} */
-        let canvas = this.ctx ;
+        let canvas:any = this.ctx ;
 
         canvas.clearRect(0,0,Width,Height);
 
@@ -49,7 +55,13 @@ export default class Preloader extends Component {
     
     render() {
         return (
-            <canvas style={{width:100,height:100,margin:'auto',display:'block'}} ref="canvas" width={Width} height={Height}/>
+            <canvas style={{width:100,height:100,margin:'auto',display:'block'}} ref={this.onCanvasCreated.bind(this)} width={Width} height={Height}/>
         );
     }
 };
+
+interface PreloaderModul {
+    setUp:typeof Preloader.setUp 
+}
+
+export {Preloader,PreloaderModul};

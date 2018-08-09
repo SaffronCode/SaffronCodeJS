@@ -6,3 +6,5 @@
 
 # production
 d# misc
+node_modules
+lib
