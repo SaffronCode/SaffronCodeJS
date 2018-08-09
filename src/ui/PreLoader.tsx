@@ -23,6 +23,10 @@ class Preloader extends Component<null> {
 
     onCanvasCreated(canvas:any) {
         //Start animation
+        if(canvas===null)
+        {
+            return ;
+        }
         /**@type {canvas} */
         this.rad = 0 ;
         this.ctx = canvas.getContext('2d');
