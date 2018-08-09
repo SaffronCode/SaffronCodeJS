@@ -1,10 +1,16 @@
-var JSFunctions = {} ;
+interface JSFunctionsModel {
+    objectToURIVars:typeof objectToURIVars
+}
+
+var JSFunctions:JSFunctionsModel = {
+    objectToURIVars:objectToURIVars
+} ;
 
 /**@description This function can convert your objecs to URIVariables string */
-JSFunctions.objectToURIVars(obj={})
+function objectToURIVars(obj:any={})
 {
     //https://stackoverflow.com/questions/6566456/how-to-serialize-an-object-into-a-list-of-url-query-parameters
-    var str = "";
+    var str:string = "";
     for (var key in obj) {
         if (str != "") {
             str += "&";

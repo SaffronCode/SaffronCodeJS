@@ -4,6 +4,8 @@ import Input from './ui/Input';
 import * as React from 'react';
 import EventDispatcher from './framework/EventDispatcher';
 import PageManager from './framework/pageManager/PageManager';
+import JSFunctions from './libs/JSFunctions';
+import StringFunctions from './libs/StringFunctions';
 
 
 
@@ -31,4 +33,17 @@ var framework:frameworkModel = {
 
 
 
-export {ui,framework} ;
+
+
+interface libsModel{
+    JSFunctions:typeof JSFunctions,
+    StringFunctions:typeof StringFunctions
+}
+
+var libs:libsModel = {
+    JSFunctions:JSFunctions,
+    StringFunctions:StringFunctions,
+}
+
+
+export {ui,framework,libs} ;

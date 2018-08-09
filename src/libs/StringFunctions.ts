@@ -1,20 +1,98 @@
-var StringFunctions = {} ;
+interface StringFunctionsModel {
+	isNullOrEmpty:typeof isNullOrEmpty,
+	isArabic:typeof isArabic,
+	isPersian:typeof isPersian,
+	search:typeof search,
+	generateLinks:typeof generateLinks,
+	clearDoubleQuartmarksOnJSON:typeof clearDoubleQuartmarksOnJSON,
+	clearSpacesAndTabs:typeof clearSpacesAndTabs,
+	clearSpacesAndTabsAndArrows:typeof clearSpacesAndTabsAndArrows,
+	utfToUnicode:typeof utfToUnicode,
+	correctUTF:typeof correctUTF,
+	short:typeof short,
+	timeInString:typeof timeInString,
+	numToString:typeof numToString,
+	clearHTMLTags:typeof clearHTMLTags,
+	removeHTML:typeof removeHTML,
+	compairFarsiString:typeof compairFarsiString,
+	htmlCharacterEncoder:typeof htmlCharacterEncoder,
+	KaafYe:typeof KaafYe,
+	jsonCorrector:typeof jsonCorrector,
+	removeNumberFromBegining:typeof removeNumberFromBegining,
+	isEmail:typeof isEmail,
+	makeHTMLWithSize:typeof makeHTMLWithSize,
+	findMainDomain:typeof findMainDomain,
+	findPortOfURL:typeof findPortOfURL,
+	correctInputString:typeof correctInputString,
+	numCorrection:typeof numCorrection,
+	isURL:typeof isURL,
+	isLocation:typeof isLocation,
+	currancyPrint:typeof currancyPrint,
+	returnLasNumberPartInInteger:typeof returnLasNumberPartInInteger,
+	stringToColor:typeof stringToColor,
+	removeSpacesFromTwoSides:typeof removeSpacesFromTwoSides,
+	fileSizeInString:typeof fileSizeInString,
+}
+
+var StringFunctions:StringFunctionsModel = {
+	isNullOrEmpty:isNullOrEmpty,
+	isArabic:isArabic,
+	isPersian:isPersian,
+	search:search,
+	generateLinks:generateLinks,
+	clearDoubleQuartmarksOnJSON:clearDoubleQuartmarksOnJSON,
+	clearSpacesAndTabs:clearSpacesAndTabs,
+	clearSpacesAndTabsAndArrows:clearSpacesAndTabsAndArrows,
+	utfToUnicode:utfToUnicode,
+	correctUTF:correctUTF,
+	short:short,
+	timeInString:timeInString,
+	numToString:numToString,
+	clearHTMLTags:clearHTMLTags,
+	removeHTML:removeHTML,
+	compairFarsiString:compairFarsiString,
+	htmlCharacterEncoder:htmlCharacterEncoder,
+	KaafYe:KaafYe,
+	jsonCorrector:jsonCorrector,
+	removeNumberFromBegining:removeNumberFromBegining,
+	isEmail:isEmail,
+	makeHTMLWithSize:makeHTMLWithSize,
+	findMainDomain:findMainDomain,
+	findPortOfURL:findPortOfURL,
+	correctInputString:correctInputString,
+	numCorrection:numCorrection,
+	isURL:isURL,
+	isLocation:isLocation,
+	currancyPrint:currancyPrint,
+	returnLasNumberPartInInteger:returnLasNumberPartInInteger,
+	stringToColor:stringToColor,
+	removeSpacesFromTwoSides:removeSpacesFromTwoSides,
+	fileSizeInString:fileSizeInString,
+} ;
 
 
 
 
-var EnglishEstesna = ['’'];
+var EnglishEstesna:string[] = ['’'];
 
-var	arabicChars = 'ًٌٍَُِّْٰٜٕٖۣٞٝٓٔٗ٘ٙٚٛؕؔؓؐؑؒۖۘۗۙۚۛۜۢ‌ـ?',
-	arabicSames = ['ؤو','11','22','33','44','55','66','77','88','99','00',
+var	arabicChars:string = 'ًٌٍَُِّْٰٜٕٖۣٞٝٓٔٗ٘ٙٚٛؕؔؓؐؑؒۖۘۗۙۚۛۜۢ‌ـ?',
+	arabicSames:string[] = ['ؤو','11','22','33','44','55','66','77','88','99','00',
 							'0٠۰','1١۱','9٩۹','8٨۸','7٧۷','6٦۶','5٥۵','4٤۴','3٣۳','2٢۲'
 							,'ييیىئ','اإأآ?','کك'],
 	arabicWord = 'والي';
 		
 		
+function isNullOrEmpty(value:string):boolean
+{
+	if(value===undefined || value === null || value==="")
+		return true;
+	else
+		return false;
+}
+
 		/**@desc returns true if there was to many arabic signes there<br>
 		 * if the number of arabic sign was less than 1/4 , this function detect that the str is not arabic*/
-StringFunctions.isArabic = function(str="")
+function isArabic(str:string=""):boolean
 {
 	var reg = new RegExp('['+arabicChars+']','g');
 	var founced = 0 ;
@@ -40,7 +118,7 @@ StringFunctions.isArabic = function(str="")
 /**@desc Returns true if currenct string has at least one persian script.
  * @returns {Boolean}
 */
-StringFunctions.isPersian = function(str="",stringLength=NaN)
+function isPersian(str:string="",stringLength:number=NaN):boolean
 {
 	var max = 0;
 	if(isNaN(stringLength))
@@ -63,7 +141,7 @@ StringFunctions.isPersian = function(str="",stringLength=NaN)
 }
 
 /**@desc it will returns list of points that shows index and ofsset of each word founded > [{x:0,y:0}]*/
-StringFunctions.search = function(str="",searchedWord="",fineAll = true,arabic=false, arabic2=false)
+function search(str:string="",searchedWord:string="",fineAll:boolean = true,arabic:boolean=false, arabic2:boolean=false)
 {
 	var founded = [{x:0,y:0}];
 	founded = [] ;
@@ -130,7 +208,7 @@ StringFunctions.search = function(str="",searchedWord="",fineAll = true,arabic=f
 //////////////////////////////////////////////////link generators↓
 
 /**@desc generate link on the current string and it will returns html text*/
-StringFunctions.generateLinks = function(str="",linkColors=-1)
+function generateLinks(str:string="",linkColors:number=-1):string
 {
 	var colorTagStart = '';
 	var colorTagEnd = '';
@@ -162,7 +240,7 @@ StringFunctions.generateLinks = function(str="",linkColors=-1)
 /**@desc *Clear in line "s in the json values:<br>
  * {"data":"my name is "ali"."}<br>
  * {"data":"my name is \"ali\"."}*/
-StringFunctions.clearDoubleQuartmarksOnJSON = function(str="")
+function clearDoubleQuartmarksOnJSON(str:string=""):string
 {
 	//var str:String = '[{"IdNews":"585","DateNews":"1394\\/8\\/20 ","SubjectNews":"fdjsakl fjk\\"adsl jfkldsa ","ImageNews":"http:\\/\\/www.melkban24.ir\\/Files\\/News585.jpg"},{"IdNews":"584","DateNews":"1394\\/8\\/20 ","SubjectNews":"fsjdkl klfsad jklfsjadk ljfklds","ImageNews":"http:\\/\\/www.melkban24.ir\\/Files\\/News584.jpg"},{"IdNews":"583","DateNews":"1394\\/8\\/19 ","SubjectNews":"fdjks jkfjd skfkjdkslfj jkfd f","ImageNews":"http:\\/\\/www.melkban24.ir\\/Files\\/News583.jpg"},{"IdNews":"582","DateNews":"1394\\/8\\/19 ","SubjectNews":"fdjfk kfjd lfdk lfkdsjkfkdfkls jkf","ImageNews":"http:\\/\\/www.melkban24.ir\\/Files\\/News582.jpg"},{"IdNews":"581","DateNews":"1394\\/8\\/18 ","SubjectNews":"مjkf jkfdjsk jkfldjkfld kfdjkfdjk","ImageNews":"http:\\/\\/www.melkban24.ir\\/Files\\/News581.jpg"},{"IdNews":"580","DateNews":"1394\\/8\\/18 ","SubjectNews":"fksjdf kfjds klfjkdlfkdsj f sf sfd","ImageNews":"http:\\/\\/www.melkban24.ir\\/Files\\/News580.jpg"},{"IdNews":"579","DateNews":"1394\\/8\\/18 ","SubjectNews":"fdskl jfsdkj kfdsjk jkflfdks","ImageNews":"http:\\/\\/www.melkban24.ir\\/Files\\/News579.jpg"},{"IdNews":"578","DateNews":"1394\\/8\\/18 ","SubjectNews":"fdsa fad" sfdsa"fdfsaf","ImageNews":"http:\\/\\/www.melkban24.ir\\/Files\\/News578.jpg"},{"IdNews":"577","DateNews":"1394\\/8\\/17 ","SubjectNews":"jisfad jkfsdjakj lfasjfdjfsdj kfsdjkl jkf","ImageNews":"http:\\/\\/www.melkban24.ir\\/Files\\/News577.jpg"},{"IdNews":"576","DateNews":"1394\\/8\\/17 ","SubjectNews":"fdf afd fsadfdsaf afs df asfsda fsda ","ImageNews":"http:\\/\\/www.melkban24.ir\\/Files\\/News576.jpg"}]';
 	var regexp = /(":"((?!"\},\{)(?!",")(?!"\}\])(?!"\})(.))*[^\\])"((?!\},\{)(?!,")(?!\}\])(?!\}))/gi
@@ -176,7 +254,7 @@ StringFunctions.clearDoubleQuartmarksOnJSON = function(str="")
 }
 
 /**@desc This function will remove all spaces and tabs and enters from a string*/
-StringFunctions.clearSpacesAndTabs = function(str="")
+function clearSpacesAndTabs(str:string=""):string
 {
 	if(str===null)
 		return '' ;
@@ -185,7 +263,7 @@ StringFunctions.clearSpacesAndTabs = function(str="")
 
 
 /**@desc This function will remove all spaces and tabs and enters from a string*/
-StringFunctions.clearSpacesAndTabsAndArrows = function(str="")
+function clearSpacesAndTabsAndArrows(str:string="")
 {
 	if(str===null)
 		return '' ;
@@ -197,7 +275,7 @@ StringFunctions.clearSpacesAndTabsAndArrows = function(str="")
 
 
 ///////////////////New Funciton on String funciont
-StringFunctions.utfToUnicode = function(utfString="")
+function utfToUnicode(utfString:string=""):string
 {
 	
 	var reg = /u[0-9a-f][0-9a-f][0-9a-f][0-9a-f]/gi;
@@ -221,7 +299,7 @@ StringFunctions.utfToUnicode = function(utfString="")
 	return correctedString ;
 }
 
-StringFunctions.correctUTF = function(utfWord="")
+function correctUTF(utfWord:string=""):string
 {
 	
 	var num = utfWord.substring(1) ;
@@ -230,7 +308,7 @@ StringFunctions.correctUTF = function(utfWord="")
 
 /////////////////////////////////////////////////Sumerize texts
 /**@desc This function will shorten the senteces by the len vlaue*/
-StringFunctions.short = function(str="",len=10,removeEntersWith='')
+function short(str:string="",len:number=10,removeEntersWith:string='')
 {
 	if(str===null)
 	{
@@ -276,7 +354,7 @@ StringFunctions.htmlCorrect = function(htm="",linkColor=-1,replacePwithEnter=fal
 
 ///////////////////////////////////////////////////////Time functions
 /**@desc return the time from seconds to string 10:54*/
-StringFunctions.timeInString = function(seconds=0)
+function timeInString(seconds:number=0):string
 {
 	seconds = Math.ceil(seconds);
 	var min = Math.floor(seconds/60);
@@ -285,33 +363,33 @@ StringFunctions.timeInString = function(seconds=0)
 	min = min%60;
 	if(hour>0)
 	{
-		return StringFunctions.numToString(hour)+':'+StringFunctions.numToString(min)+':'+StringFunctions.numToString(seconds);
+		return numToString(hour)+':'+numToString(min)+':'+numToString(seconds);
 	}
 	else
 	{
-		return StringFunctions.numToString(min)+':'+StringFunctions.numToString(seconds);
+		return numToString(min)+':'+numToString(seconds);
 	}
 }
 
 /**@desc 1 > 001*/
-StringFunctions.numToString = function(num,numberLenght=2)
+function numToString(num:number,numberLenght:number=2):string
 {
-	num = String(num);
-	while(num.length<numberLenght)
+	var num2:string = String(num);
+	while(num2.length<numberLenght)
 	{
-		num = '0'+num;
+		num2 = '0'+num2;
 	}
-	return num;
+	return num2;
 }
 
 /**@desc Remove all html tags from the text*/
-StringFunctions.clearHTMLTags = function(ReferText="")
+function clearHTMLTags(ReferText:string=""):string
 {
-	return StringFunctions.removeHTML(ReferText);
+	return removeHTML(ReferText);
 }
 
 /**@desc Remove all html tags from the text*/
-StringFunctions.removeHTML = function(ReferText="")
+function removeHTML(ReferText:string=""):string
 {
 	if(ReferText===null)
 	{
@@ -323,7 +401,7 @@ StringFunctions.removeHTML = function(ReferText="")
 
 
 /**@desc Returns -1 if string1 < str2, 1 if str1>str2*/
-StringFunctions.compairFarsiString = function(str1="",str2="")
+function compairFarsiString(str1:string="",str2:string=""):number
 {
 	str1 = str1.toLowerCase();
 	str2 = str2.toLowerCase();
@@ -352,8 +430,8 @@ StringFunctions.compairFarsiString = function(str1="",str2="")
 	}
 	
 	var alephba = "ابپتثجچهخدذرزژسشصضطظعغفقكگلمنوهیي";
-	var farsiStr1 = StringFunctions.KaafYe(str1);
-	var farsiStr2 = StringFunctions.KaafYe(str2);
+	var farsiStr1 = KaafYe(str1);
+	var farsiStr2 = KaafYe(str2);
 	
 	var index1 = alephba.indexOf(farsiStr1.charAt(0));
 	var index2 = alephba.indexOf(farsiStr2.charAt(0));
@@ -387,7 +465,7 @@ StringFunctions.compairFarsiString = function(str1="",str2="")
 		return 0 ;
 	}
 }
-StringFunctions.htmlCharacterEncoder = function(str="")
+function htmlCharacterEncoder(str:string=""):string
 {
 	
 	var _htmlCar = [{from:"&laquo;",to:"«"},{from:"&raquo;",to:"»"},{from:"&nbsp;",to:" "},{from:'&lt;',to:"<"},{from:"&gt;",to:">"},{from:"&amp;",to:"&"},{from:"&quot;",to:"\\\""},{from:"&apos;",to:"'"},{from:"&cent;",to:"¢"},{from:"&pound;",to:"£"},{from:"&yen;",to:"¥"},{from:"&euro;",to:"€"},{from:"&copy;",to:"©"},{from:"&reg;",to:"®"},{from:"&zwnj;",to:" "}]
@@ -400,12 +478,12 @@ StringFunctions.htmlCharacterEncoder = function(str="")
 }
 
 /**@desc this function will remove all persian ک and ی and will repace them with ي and ك*/
-StringFunctions.KaafYe = function(str="")
+function KaafYe(str:string=""):string
 {
 	return str.split('ی').join('ي').split('ک').join('ك').split('ى').join('ي');
 }
 
-StringFunctions.jsonCorrector = function(oldJson="")
+function jsonCorrector(oldJson:string=""):string
 {
 	return oldJson.split('\n').join(' \\n').split('\r').join(' \\r').split('"').join('"').split('\t').join('\\t')
 }
@@ -414,7 +492,7 @@ StringFunctions.jsonCorrector = function(oldJson="")
  * 0000helo > 0000helo<br>
  * abs02-hello > abs02-hello*/
 
-StringFunctions.removeNumberFromBegining = function(str="")
+function removeNumberFromBegining(str:string=""):string
 {
 	var firstDashIndex = str.indexOf('-');
 	if(firstDashIndex!==-1)
@@ -435,14 +513,14 @@ StringFunctions.removeNumberFromBegining = function(str="")
 ////////////////////////////String controll
 
 /**@desc Returns true if this was an email*/
-StringFunctions.isEmail = function(email="")
+function isEmail(email:string=""):boolean
 {
 	var reg = /^[\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
 	return reg.test(email);
 }
 
 /**@desc Returns sized html text*/
-StringFunctions.makeHTMLWithSize = function(pureHML="", defaultFontSize=0)
+function makeHTMLWithSize(pureHML:string="", defaultFontSize:number=0):string
 {
 	//<P ALIGN="LEFT"><FONT FACE="B Yekan Bold Bold" SIZE="38" COLOR="#000000" LETTERSPACING="0" KERNING="1">f<FONT SIZE="96">s</FONT>d</FONT></P>
 	return '<FONT SIZE="'+defaultFontSize+'">'+pureHML+'</FONT>';
@@ -450,7 +528,7 @@ StringFunctions.makeHTMLWithSize = function(pureHML="", defaultFontSize=0)
 
 ////////////////////////////////////////////////////////
 /**@desc Returns a domain of an url : www.google.com/translage >> google.com*/
-StringFunctions.findMainDomain = function(url="",removeHTTPPart=true)
+function findMainDomain(url:string="",removeHTTPPart:boolean=true):string
 {
 	var founded = url.match(/^((http(s|):\/\/)|)[^/^:^\r^\n]+/);
 	if(founded===null || founded.length===0)
@@ -466,7 +544,7 @@ StringFunctions.findMainDomain = function(url="",removeHTTPPart=true)
 }
 
 /**@desc Return positive number if port founded*/
-StringFunctions.findPortOfURL = function(url="")
+function findPortOfURL(url:string=""):number
 {
 	var founded = url.match(/:[1234567890]+\//) ;
 	var portPart ;
@@ -486,12 +564,12 @@ StringFunctions.findPortOfURL = function(url="")
 }
 
 /**@desc It will replace ي with ی and correct numbers. */
-StringFunctions.correctInputString = function(str="")
+function correctInputString(str:string=""):string
 {
 	return StringFunctions.KaafYe(StringFunctions.numCorrection(str));
 }
 
-StringFunctions.numCorrection = function(str="")
+function numCorrection(str:string=""):string
 {
 	var I = String('۰').charCodeAt(0);
 	for(var i=I ; i<I+10 ; i++){
@@ -506,13 +584,13 @@ StringFunctions.numCorrection = function(str="")
 
 /**@desc Returns true if entered string was URL*/
 /**@desc Returns true if entered string was URL*/
-StringFunctions.isURL = function(str="")
+function isURL(str:string=""):boolean
 {
 	var reg = /^(http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?$/i;
 	return reg.test(str);
 }
 
-StringFunctions.isLocation=function(str="")
+function isLocation(str:string=""):boolean
 {
 	var reg = /^[\d]+\.[\d]+,[\d]+\.[\d]+$/i;
 	return reg.test(str);
@@ -520,7 +598,7 @@ StringFunctions.isLocation=function(str="")
 
 ///////////////////////////////////////////////////////**@desc ********/////////////////////////
 /**@desc 2500>>>>>>>2,500  12.5654*/
-StringFunctions.currancyPrint = function(inputcurencynumber)
+function currancyPrint(inputcurencynumber:string):string
 {
 	inputcurencynumber=String(inputcurencynumber);
 	
@@ -557,7 +635,7 @@ StringFunctions.currancyPrint = function(inputcurencynumber)
 
 
 /**@desc http://www.google.com/342 >>> 342.  but it will returns 0 if no number found at the end of line*/
-StringFunctions.returnLasNumberPartInInteger = function(str="")
+function returnLasNumberPartInInteger(str:string=""):number
 {
 	var matched = str.match(/[\d]+$/) ;
 	if(matched === null || matched.length === 0)
@@ -570,7 +648,7 @@ StringFunctions.returnLasNumberPartInInteger = function(str="")
 
 //////////////////////////////////STring to color
 /**@desc Creats color from a link*/
-StringFunctions.stringToColor = function(str="")
+function stringToColor(str:string=""):number
 {
 	var col = 0 ;
 	for(var i = 0 ; i<str.length ; i++)
@@ -600,7 +678,7 @@ StringFunctions.stringToColor = function(str="")
 
 
 /**@desc Remove spaces from two side of the inputed string : "   hello world  " > "hello world" */
-StringFunctions.removeSpacesFromTwoSides=function(str="")
+function removeSpacesFromTwoSides(str:string=""):string
 {
 	str = str.replace(/[\s]+$/g,'');
 	str = str.replace(/^[\s]+/g,'');
@@ -608,7 +686,7 @@ StringFunctions.removeSpacesFromTwoSides=function(str="")
 }
 
 /**@desc Returning file size in String with lable*/
-StringFunctions.fileSizeInString = function(fileSizeInByte=0)
+function fileSizeInString(fileSizeInByte:number=0):string
 {
 	if(isNaN(fileSizeInByte))
 	{

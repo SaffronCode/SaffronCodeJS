@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import StringFunctions from '../libs/StringFunctions';
 
 interface InputProps {
     onChange:(inputTarget:any)=>null;
@@ -40,7 +41,7 @@ export default class Input extends Component<InputProps,InputProps> {
     
     onChange(item:any)
     {
-        item.target.value = this.NumberChange(this.correctString(item.target.value));
+        item.target.value = StringFunctions.correctInputString(item.target.value);
         if(this.props.pattern!=="")
         {
             item.target.value = String(item.target.value).match(this.props.pattern);
@@ -48,20 +49,6 @@ export default class Input extends Component<InputProps,InputProps> {
         this.state.onChange(item);
     }
 
-    correctString(str='')
-    {
-        return str.split('ي').join('ی').split('ة').join('ه').split('‏').join(' ').split('ك').join('ک');
-    }
-
-    
-    NumberChange(str='',zero='۰')
-    {
-        var I = String('۰').charCodeAt(0);
-        for(var i=0 ; i<10 ; i++){
-            str = str.split(String.fromCharCode(i+I)).join(String(i));
-        }
-        return str;
-    }
 
   render() {
       let currentType = this.state.type ;
