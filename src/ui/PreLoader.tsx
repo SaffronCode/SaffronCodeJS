@@ -5,10 +5,11 @@ var preLoaderColor = "#777777ff",
     Height = 200 ,
     AnimSpeed = 0.2 ;
 
-export default class Preloader extends Component<any, any> {
+
+class Preloader extends Component<null> {
 
 
-    static setColor(newColor:string="#777777ff",width:number=200,height:number=200,animSpeed:number=0.2)
+    static setUp(newColor:string="#777777ff",width:number=200,height:number=200,animSpeed:number=0.2)
     {
         Width = width ;
         Height = height ;
@@ -58,3 +59,9 @@ export default class Preloader extends Component<any, any> {
         );
     }
 };
+
+interface PreloaderModul {
+    setUp:typeof Preloader.setUp 
+}
+
+export {Preloader,PreloaderModul};
