@@ -9,7 +9,7 @@
 
 ### Preloader
 
-1- Set the Preloader color,size and animation speed once in index.js ui.Preloader.setUp("#777777ff",200,200,0.2) 
+1- Set the Preloader color,size and animation speed once in index.js ui.Preloader.setUp("#777777ff",200,200,0.2) <br/>
 2- and then use it every where like below: <ui.Preloader/> ☺
 
 ### Input
@@ -17,7 +17,7 @@
 This is just like html input tag but it has better control on patterns and it will correct the user's mismatches character
 
 ## libs
-Pure JS functions and classes
+Pure JS functions and classes<br/>
 `import {libs} from 'saffroncodejs'`
 
 ### StringFunctions
