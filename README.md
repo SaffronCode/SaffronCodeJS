@@ -66,29 +66,46 @@ utfToUnicode(utfString:string=""):string<br>
 `framework.EventDispatcher:Class`
 List of functions:
 `var dispatcher = new EventDispatcher();
-//How to add and remove an EventListner on an dispatcher;
+
+//How to add and remove an EventListner on an dispatcher
+
 dispatcher.addEventListner(type:string,trigger:(eventType?:string,param?:any)=>any):void;
-//sample : dispatcher.addEventListner("LOGGED_IN",this.userIsLoggedIn);
+
+//sample : dispatcher.addEventListner("LOGGED_IN",this.userIsLoggedIn)
+
 dispatcher.removeEventListner(type:string,trigger:(eventType?:string,param?:any)=>any):void;
-//sample : dispatcher.removeEventListner("LOGGED_IN",this.userIsLoggedIn);
-//How to dispatch an event on your dispatcher;
+
+//sample : dispatcher.removeEventListner("LOGGED_IN",this.userIsLoggedIn)
+
+//How to dispatch an event on your dispatcher
+
 dispatcher.dispatchEvent(type:string,param:any=null):void;
+
 //sample : dispatcher.dispatchEvent("LOGGED_IN",userTocken)`
 
 ## PageManager(ReactRouter's Assist)
 `
-    dispatcher:new EventDispatcher(),
-    PAGE_CHANGED : "PAGE_CHANGED",
-    routerParamList:'',
-    changePage:changePage,
-    decodePageParams:decodePageParams,
-    getCurrentPage:getCurrentPage,
-    registerPage:registerPage,
+    dispatcher:new EventDispatcher()
+    
+    PAGE_CHANGED : "PAGE_CHANGED"
+    
+    routerParamList:''
+    
+    changePage:changePage
+    
+    decodePageParams:decodePageParams
+    
+    getCurrentPage:getCurrentPage
+    
+    registerPage:registerPage
 `
 ### PageData
 `    url:string;
+
     pageName:string;
+    
     component?:React.ComponentClass;
+    
     pageData:any;
 `
 
