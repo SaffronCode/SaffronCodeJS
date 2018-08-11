@@ -24,41 +24,72 @@ Pure JS functions and classes<br/>
 
 Full list of libs.StringFunctions functions:
 
-function isNullOrEmpty(value:string):boolean<br>
-function isArabic(str:string=""):boolean<br>
-function isPersian(str:string="",stringLength:number=NaN):boolean<br>
-function search(str:string="",searchedWord:string="",fineAll:boolean = true,arabic:boolean=false, arabic2:boolean=false)<br>
-function generateLinks(str:string="",linkColors:number=-1):string<br>
-function clearDoubleQuartmarksOnJSON(str:string=""):string<br>
-function clearSpacesAndTabs(str:string=""):string<br>
-function clearSpacesAndTabsAndArrows(str:string="")<br>
-function utfToUnicode(utfString:string=""):string<br>
-function correctUTF(utfWord:string=""):string<br>
-function short(str:string="",len:number=10,removeEntersWith:string='')<br>
-function timeInString(seconds:number=0):string<br>
-function numToString(num:number,numberLenght:number=2):string<br>
-function clearHTMLTags(ReferText:string=""):string<br>
-function removeHTML(ReferText:string=""):string<br>
-function compairFarsiString(str1:string="",str2:string=""):number<br>
-function htmlCharacterEncoder(str:string=""):string<br>
-function KaafYe(str:string=""):string<br>
-function jsonCorrector(oldJson:string=""):string<br>
-function removeNumberFromBegining(str:string=""):string<br>
-function isEmail(email:string=""):boolean<br>
-function makeHTMLWithSize(pureHML:string="", defaultFontSize:number=0):string<br>
-function findMainDomain(url:string="",removeHTTPPart:boolean=true):string<br>
-function findPortOfURL(url:string=""):number<br>
-function correctInputString(str:string=""):string<br>
-function numCorrection(str:string=""):string<br>
-function isURL(str:string=""):boolean<br>
-function isLocation(str:string=""):boolean<br>
-function currancyPrint(inputcurencynumber:string):string<br>
-function returnLasNumberPartInInteger(str:string=""):number<br>
-function stringToColor(str:string=""):number<br>
-function removeSpacesFromTwoSides(str:string=""):string<br>
-function fileSizeInString(fileSizeInByte:number=0):string<br>
+clearDoubleQuartmarksOnJSON(str:string=""):string<br>
+clearHTMLTags(ReferText:string=""):string<br>
+clearSpacesAndTabs(str:string=""):string<br>
+clearSpacesAndTabsAndArrows(str:string="")<br>
+compairFarsiString(str1:string="",str2:string=""):number<br>
+correctInputString(str:string=""):string<br>
+correctUTF(utfWord:string=""):string<br>
+currancyPrint(inputcurencynumber:string):string<br>
+fileSizeInString(fileSizeInByte:number=0):string<br>
+findMainDomain(url:string="",removeHTTPPart:boolean=true):string<br>
+findPortOfURL(url:string=""):number<br>
+generateLinks(str:string="",linkColors:number=-1):string<br>
+htmlCharacterEncoder(str:string=""):string<br>
+isArabic(str:string=""):boolean<br>
+isEmail(email:string=""):boolean<br>
+isLocation(str:string=""):boolean<br>
+isNullOrEmpty(value:string):boolean<br>
+isPersian(str:string="",stringLength:number=NaN):boolean<br>
+isURL(str:string=""):boolean<br>
+jsonCorrector(oldJson:string=""):string<br>
+KaafYe(str:string=""):string<br>
+makeHTMLWithSize(pureHML:string="", defaultFontSize:number=0):string<br>
+numCorrection(str:string=""):string<br>
+numToString(num:number,numberLenght:number=2):string<br>
+removeHTML(ReferText:string=""):string<br>
+removeNumberFromBegining(str:string=""):string<br>
+removeSpacesFromTwoSides(str:string=""):string<br>
+returnLasNumberPartInInteger(str:string=""):number<br>
+search(str:string="",searchedWord:string="",fineAll:boolean = true,arabic:boolean=false, arabic2:boolean=false)<br>
+short(str:string="",len:number=10,removeEntersWith:string='')<br>
+stringToColor(str:string=""):number<br>
+timeInString(seconds:number=0):string<br>
+utfToUnicode(utfString:string=""):string<br>
 
 	
 # framework
 `import {framework} from 'saffroncodejs'`
+
+## EventDispatcher
+`framework.EventDispatcher:Class`
+List of functions:
+`var dispatcher = new EventDispatcher();
+//How to add and remove an EventListner on an dispatcher;
+dispatcher.addEventListner(type:string,trigger:(eventType?:string,param?:any)=>any):void;
+//sample : dispatcher.addEventListner("LOGGED_IN",this.userIsLoggedIn);
+dispatcher.removeEventListner(type:string,trigger:(eventType?:string,param?:any)=>any):void;
+//sample : dispatcher.removeEventListner("LOGGED_IN",this.userIsLoggedIn);
+//How to dispatch an event on your dispatcher;
+dispatcher.dispatchEvent(type:string,param:any=null):void;
+//sample : dispatcher.dispatchEvent("LOGGED_IN",userTocken)`
+
+## PageManager(ReactRouter's Assist)
+`
+    dispatcher:new EventDispatcher(),
+    PAGE_CHANGED : "PAGE_CHANGED",
+    routerParamList:'',
+    changePage:changePage,
+    decodePageParams:decodePageParams,
+    getCurrentPage:getCurrentPage,
+    registerPage:registerPage,
+`
+### PageData
+`    url:string;
+    pageName:string;
+    component?:React.ComponentClass;
+    pageData:any;
+`
+
 
