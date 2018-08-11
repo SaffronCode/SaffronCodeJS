@@ -1,6 +1,6 @@
 {
 	"name": "saffroncodejs",
-	"version": "1.3.6",
+	"version": "1.3.9",
 	"description": "Package of optimised react components and javascript functions for developers ♫♪",
 	"main": "./lib/SaffronCode.js",
 	"types": "./lib/SaffronCode.d.ts",
@@ -44,7 +44,10 @@
 		"persian",
 		"rtl",
 		"regex",
-		"string"
+		"string",
+		"ReactRouter",
+		"framework",
+		"EventDispatcher"
 	],
 	"author": "SaffronCode Co <ebrahimsepehr@gmail.com>",
 	"license": "MIT",
