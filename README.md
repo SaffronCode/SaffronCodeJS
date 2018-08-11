@@ -63,28 +63,28 @@ utfToUnicode(utfString:string=""):string<br>
 `import {framework} from 'saffroncodejs'`
 
 ## EventDispatcher
-`framework.EventDispatcher:Class`
-List of functions:
-`var dispatcher = new EventDispatcher();
 
-//How to add and remove an EventListner on an dispatcher
+	var dispatcher = new EventDispatcher();
 
-dispatcher.addEventListner(type:string,trigger:(eventType?:string,param?:any)=>any):void;
+	//How to add and remove an EventListner on an dispatcher
 
-//sample : dispatcher.addEventListner("LOGGED_IN",this.userIsLoggedIn)
+	dispatcher.addEventListner(type:string,trigger:(eventType?:string,param?:any)=>any):void;
 
-dispatcher.removeEventListner(type:string,trigger:(eventType?:string,param?:any)=>any):void;
+	//sample : dispatcher.addEventListner("LOGGED_IN",this.userIsLoggedIn)
 
-//sample : dispatcher.removeEventListner("LOGGED_IN",this.userIsLoggedIn)
+	dispatcher.removeEventListner(type:string,trigger:(eventType?:string,param?:any)=>any):void;
 
-//How to dispatch an event on your dispatcher
+	//sample : dispatcher.removeEventListner("LOGGED_IN",this.userIsLoggedIn)
 
-dispatcher.dispatchEvent(type:string,param:any=null):void;
+	//How to dispatch an event on your dispatcher
 
-//sample : dispatcher.dispatchEvent("LOGGED_IN",userTocken)`
+	dispatcher.dispatchEvent(type:string,param:any=null):void;
+
+	//sample : dispatcher.dispatchEvent("LOGGED_IN",userTocken)
+
 
 ## PageManager(ReactRouter's Assist)
-`
+
     dispatcher:new EventDispatcher()
     
     PAGE_CHANGED : "PAGE_CHANGED"
@@ -98,15 +98,15 @@ dispatcher.dispatchEvent(type:string,param:any=null):void;
     getCurrentPage:getCurrentPage
     
     registerPage:registerPage
-`
+
 ### PageData
-`    url:string;
+    url:string;
 
     pageName:string;
     
     component?:React.ComponentClass;
     
     pageData:any;
-`
+
 
 
