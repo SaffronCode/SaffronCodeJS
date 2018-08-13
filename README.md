@@ -1,6 +1,7 @@
 <p align="center"><img alt="Saffron React" src="https://github.com/SaffronCode/SaffronCode-React/blob/master/doc/152.png?raw=true"/></p>
 
 <p align="center">Package of graphical and non graphical libraries for React developers such as Canvas preloader and Regex functions.</p>
+<p align="center"><a href="https://github.com/SaffronCode/SaffronCodeJS/stargazers">(<bold>Support us with your stars on <bold><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Logo.png" width="50px"/>)</a></p>
 
 `npm install saffroncodejs`
 
