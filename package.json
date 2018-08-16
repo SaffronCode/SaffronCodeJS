@@ -1,6 +1,6 @@
 {
-	"name": "saffroncodejs",
-	"version": "1.4.1",
+	"name": "saffroncodejs-pure",
+	"version": "1.4.2",
 	"description": "Package of optimised javascript functions and libraries for developers ♫♪",
 	"main": "./lib/SaffronCode.js",
 	"types": "./lib/SaffronCode.d.ts",
