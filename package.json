@@ -1,7 +1,7 @@
 {
 	"name": "saffroncodejs",
-	"version": "1.4.0",
-	"description": "Package of optimised react components and javascript functions for developers ♫♪",
+	"version": "1.4.1",
+	"description": "Package of optimised javascript functions and libraries for developers ♫♪",
 	"main": "./lib/SaffronCode.js",
 	"types": "./lib/SaffronCode.d.ts",
 	"directories": {
