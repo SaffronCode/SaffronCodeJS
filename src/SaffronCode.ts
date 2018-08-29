@@ -7,6 +7,7 @@ import PageManager from './framework/pageManager/PageManager';
 import JSFunctions from './libs/JSFunctions';
 import StringFunctions from './libs/StringFunctions';
 import PageData from './framework/pageManager/PageData';
+import GlobalStorage from './libs/GlobalStorage';
 
 
 
@@ -37,15 +38,16 @@ var framework:frameworkModel = {
 
 
 
-
 interface libsModel{
     JSFunctions:typeof JSFunctions,
-    StringFunctions:typeof StringFunctions
+    StringFunctions:typeof StringFunctions,
+    GlobalStorage:typeof GlobalStorage
 }
 
 var libs:libsModel = {
     JSFunctions:JSFunctions,
     StringFunctions:StringFunctions,
+    GlobalStorage:GlobalStorage,
 }
 
 
