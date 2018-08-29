@@ -600,6 +600,10 @@ function isLocation(str:string=""):boolean
 /**@desc 2500>>>>>>>2,500  12.5654*/
 function currancyPrint(inputcurencynumber:string):string
 {
+	if(isNullOrEmpty(inputcurencynumber))
+	{
+		return '' ;
+	}
 	inputcurencynumber=String(inputcurencynumber);
 	
 	var relPart = '' ;
