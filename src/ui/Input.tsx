@@ -4,6 +4,7 @@ import StringFunctions from '../libs/StringFunctions';
 interface InputProps {
     onChange:(inputTarget:any)=>null;
     id:string,
+    autoComplete:string,
     type:string,
     value:string,
     name:string,
@@ -56,12 +57,12 @@ export default class Input extends Component<InputProps,InputProps> {
       {
             currentType = 'text';
       }
-      console.log("this.state.checked : ",this.state.checked);
-      console.log("this.state.defaultChecked : ",this.state.defaultChecked);
     return (
         <input step="any" 
             onChange={this.onChange.bind(this)} 
             name={this.state.name} 
+            autoComplete={this.state.autoComplete} 
+            auto
             id={this.state.id} 
             type={currentType} 
             value={this.state.value} 
