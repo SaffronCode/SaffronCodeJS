@@ -58,6 +58,7 @@
 	"homepage": "https://github.com/SaffronCode/SaffronCodeJS#readme",
 	"dependencies": {
 		"@types/react": "^16.4.8",
-		"@types/react-dom": "^16.0.7"
+		"@types/react-dom": "^16.0.7",
+		"npm": "^6.4.1"
 	}
 }

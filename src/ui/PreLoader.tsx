@@ -32,6 +32,7 @@ class Preloader extends Component<null> {
         this.ctx = canvas.getContext('2d');
         
         this.animate();
+        clearInterval(this.intervalId);
         this.intervalId = setInterval(this.animate.bind(this),10);
     }
     componentWillUnmount(){
