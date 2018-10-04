@@ -4,7 +4,7 @@ import EventDispatcher from "../EventDispatcher";
 
 //import JSFunctions from "../libs/JSFunctions" ;
 
-const maximomAcceptableParamsOnURL = 10 ;
+const maximomAcceptableParamsOnURL = 50 ;
 var allPages:PageData[] = [] ;
 
 interface PageManagerModel {
@@ -49,6 +49,10 @@ function changePage(targetPage:PageData,pageData:any[]=[]):void
         lastPage = JSON.parse(JSON.stringify(targetPage)) ;
         for(var i = 0 ; i<pageData.length ; i++)
         {
+            if(pageData[i]===undefined || pageData[i]===null || pageData[i]==='')
+            {
+                pageData[i] = '~';
+            }
             lastPage.url += '/'+encodeURIComponent(pageData[i]) ;
         }
         PageManager.dispatcher.dispatchEvent(PageManager.PAGE_CHANGED,lastPage);
@@ -69,7 +73,11 @@ function decodePageParams(props:any={}):any[]|null
         {
             var par = props.match.params['p'+i] ;
             if(par!==undefined)
+            {
+                if(par==='~')
+                    par=null;
                 params.push(decodeURIComponent(par));
+            }
             else
                 break ;
         }
