@@ -40,22 +40,22 @@ function registerPage(page:PageData):void
     allPages.push(page);
 }
 
-var lastPage = new PageData();
+var cashedLastPage = new PageData();
 
 function changePage(targetPage:PageData,pageData:any[]=[]):void
 {
     if(targetPage!==null)
     {
-        lastPage = JSON.parse(JSON.stringify(targetPage)) ;
+        cashedLastPage = JSON.parse(JSON.stringify(targetPage)) ;
         for(var i = 0 ; i<pageData.length ; i++)
         {
             if(pageData[i]===undefined || pageData[i]===null || pageData[i]==='')
             {
                 pageData[i] = '~';
             }
-            lastPage.url += '/'+encodeURIComponent(pageData[i]) ;
+            cashedLastPage.url += '/'+encodeURIComponent(pageData[i]) ;
         }
-        PageManager.dispatcher.dispatchEvent(PageManager.PAGE_CHANGED,lastPage);
+        PageManager.dispatcher.dispatchEvent(PageManager.PAGE_CHANGED,cashedLastPage);
     }
 }
 
@@ -103,6 +103,10 @@ function getCurrentPage():PageData|null
     return null;
 }
 
+function lastPage():void
+{
+    window.history.back();
+}
 
 
 export default PageManager ;
