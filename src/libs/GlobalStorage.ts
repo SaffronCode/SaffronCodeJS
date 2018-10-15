@@ -7,7 +7,7 @@ interface GlobalStorageModel {
     save:(id:string,value:any)=>string
 }
 
-const deviceKey:string = ((new Date()).getTimezoneOffset()/60)+window.screen.width+navigator.product+window.screen.height+navigator.language+window.screen.colorDepth+navigator.platform+window.screen.pixelDepth;
+const deviceKey:string = ((new Date()).getTimezoneOffset()/60).toString();
 //alert("browserLanguage:");
 //alert("browserPlatform:");
 
