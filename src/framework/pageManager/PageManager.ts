@@ -15,6 +15,7 @@ interface PageManagerModel {
     decodePageParams:typeof decodePageParams,
     getCurrentPage:typeof getCurrentPage,
     registerPage:typeof registerPage,
+    lastPage:typeof lastPage,
 }
 
 var PageManager:PageManagerModel = {
@@ -25,6 +26,7 @@ var PageManager:PageManagerModel = {
     decodePageParams:decodePageParams,
     getCurrentPage:getCurrentPage,
     registerPage:registerPage,
+    lastPage:lastPage,
 };
 
 
