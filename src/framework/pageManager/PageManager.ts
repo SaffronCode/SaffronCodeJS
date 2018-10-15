@@ -4,7 +4,7 @@ import EventDispatcher from "../EventDispatcher";
 
 //import JSFunctions from "../libs/JSFunctions" ;
 
-const maximomAcceptableParamsOnURL = 10 ;
+const maximomAcceptableParamsOnURL = 50 ;
 var allPages:PageData[] = [] ;
 
 interface PageManagerModel {
@@ -15,6 +15,7 @@ interface PageManagerModel {
     decodePageParams:typeof decodePageParams,
     getCurrentPage:typeof getCurrentPage,
     registerPage:typeof registerPage,
+    lastPage:typeof lastPage,
 }
 
 var PageManager:PageManagerModel = {
@@ -25,6 +26,7 @@ var PageManager:PageManagerModel = {
     decodePageParams:decodePageParams,
     getCurrentPage:getCurrentPage,
     registerPage:registerPage,
+    lastPage:lastPage,
 };
 
 
@@ -40,18 +42,22 @@ function registerPage(page:PageData):void
     allPages.push(page);
 }
 
-var lastPage = new PageData();
+var cashedLastPage = new PageData();
 
 function changePage(targetPage:PageData,pageData:any[]=[]):void
 {
     if(targetPage!==null)
     {
-        lastPage = JSON.parse(JSON.stringify(targetPage)) ;
+        cashedLastPage = JSON.parse(JSON.stringify(targetPage)) ;
         for(var i = 0 ; i<pageData.length ; i++)
         {
-            lastPage.url += '/'+encodeURIComponent(pageData[i]) ;
+            if(pageData[i]===undefined || pageData[i]===null || pageData[i]==='')
+            {
+                pageData[i] = '~';
+            }
+            cashedLastPage.url += '/'+encodeURIComponent(pageData[i]) ;
         }
-        PageManager.dispatcher.dispatchEvent(PageManager.PAGE_CHANGED,lastPage);
+        PageManager.dispatcher.dispatchEvent(PageManager.PAGE_CHANGED,cashedLastPage);
     }
 }
 
@@ -69,7 +75,11 @@ function decodePageParams(props:any={}):any[]|null
         {
             var par = props.match.params['p'+i] ;
             if(par!==undefined)
+            {
+                if(par==='~')
+                    par=null;
                 params.push(decodeURIComponent(par));
+            }
             else
                 break ;
         }
@@ -95,6 +105,10 @@ function getCurrentPage():PageData|null
     return null;
 }
 
+function lastPage():void
+{
+    window.history.back();
+}
 
 
 export default PageManager ;
