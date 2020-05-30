@@ -62,6 +62,7 @@ export default class Input extends Component<InputProps,InputProps> {
             onChange={this.onChange.bind(this)} 
             name={this.state.name} 
             autoComplete={this.state.autoComplete} 
+            disabled={this.state.disabled} 
             id={this.state.id} 
             type={currentType} 
             value={this.state.value} 
