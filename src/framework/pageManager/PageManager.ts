@@ -78,7 +78,10 @@ function decodePageParams(props:any={}):any[]|null
             {
                 if(par==='~')
                     par=null;
-                params.push(decodeURIComponent(par));
+                try{
+                    params.push(decodeURIComponent(par));
+                }
+                catch(e){};
             }
             else
                 break ;
