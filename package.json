@@ -27,10 +27,10 @@
 		"babel-preset-react": "^6.16.0",
 		"babel-preset-stage-0": "^6.24.1",
 		"path": "^0.12.7",
-		"prop-types": "^15.6.0",
-		"react": "^16.0.0",
-		"react-dom": "^16.0.0",
-		"webpack": "^4.5.0",
+		"prop-types": "^15.7.2",
+		"react": "^16.13.1",
+		"react-dom": "^16.13.1",
+		"webpack": "^4.43.0",
 		"webpack-cli": "^2.0.14"
 	},
 	"keywords": [
@@ -57,8 +57,11 @@
 	},
 	"homepage": "https://github.com/SaffronCode/SaffronCodeJS#readme",
 	"dependencies": {
-		"@types/react": "^16.4.8",
-		"@types/react-dom": "^16.0.7",
-		"npm": "^6.4.1"
+		"@types/react": "^16.9.35",
+		"@types/react-dom": "^16.9.8",
+		"npm": "^6.14.5",
+		"rmdir": "^1.2.0",
+		"tsc": "^1.20150623.0",
+		"typescript": "^3.9.3"
 	}
 }

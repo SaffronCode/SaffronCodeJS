@@ -12,7 +12,8 @@ interface InputProps {
     placeholder:string,
     pattern:string,
     defaultChecked:boolean,
-    checked:boolean
+    checked:boolean,
+    disabled:boolean
 }
 
 export default class Input extends Component<InputProps,InputProps> {
@@ -25,7 +26,7 @@ export default class Input extends Component<InputProps,InputProps> {
         name:'',
         className:"",
         placeholder:null,
-        pattern:"",
+        pattern:""
         /*defaultChecked:false,
         checked:false,*/
     }
