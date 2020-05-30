@@ -26,7 +26,8 @@ export default class Input extends Component<InputProps,InputProps> {
         name:'',
         className:"",
         placeholder:null,
-        pattern:""
+        pattern:"",
+        disabled:false
         /*defaultChecked:false,
         checked:false,*/
     }
