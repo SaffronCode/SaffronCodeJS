@@ -17,6 +17,22 @@
 
 This is just like html input tag but it has better control on patterns and it will correct the user's mismatches character
 
+### TagForInput
+
+this component displayes a tag name on top corner of the input element passed to it
+(as a child component)
+<br>
+**the element can be an input, a textArea or a select input
+**supports rtl and ltr direction
+<br>
+to use inside a react app:<br>
+```
+<ui.TagForInput tagName="title">
+  <input />
+</ui.TagForInput>
+```
+<br>
+
 ## libs
 Pure JS functions and classes<br/>
 `import {libs} from 'saffroncodejs'`
