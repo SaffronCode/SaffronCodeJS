@@ -1,6 +1,6 @@
 {
 	"name": "saffroncodejs",
-	"version": "1.6.2",
+	"version": "1.7.0",
 	"description": "Package of optimised react components and javascript functions for developers ♫♪",
 	"main": "./lib/SaffronCode.js",
 	"types": "./lib/SaffronCode.d.ts",
@@ -28,9 +28,9 @@
 		"babel-preset-stage-0": "^6.24.1",
 		"path": "^0.12.7",
 		"prop-types": "^15.7.2",
-		"react": "^16.13.1",
-		"react-dom": "^16.13.1",
-		"webpack": "^4.43.0",
+		"react": "^16.14.0",
+		"react-dom": "^16.14.0",
+		"webpack": "^4.44.2",
 		"webpack-cli": "^2.0.14"
 	},
 	"keywords": [
@@ -57,11 +57,12 @@
 	},
 	"homepage": "https://github.com/SaffronCode/SaffronCodeJS#readme",
 	"dependencies": {
-		"@types/react": "^16.9.35",
-		"@types/react-dom": "^16.9.8",
-		"npm": "^6.14.5",
+		"@types/react": "^16.14.2",
+		"@types/react-dom": "^16.9.10",
+		"npm": "^6.14.10",
 		"rmdir": "^1.2.0",
 		"tsc": "^1.20150623.0",
-		"typescript": "^3.9.3"
+		"typescript": "^3.9.7",
+		"user": "0.0.0"
 	}
 }

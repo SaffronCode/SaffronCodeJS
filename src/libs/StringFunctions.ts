@@ -82,12 +82,12 @@ var	arabicChars:string = 'ًٌٍَُِّْٰٜٕٖٞٝٓٔٗ٘ٙٚٛؕؔؓؐؑؒ
 	arabicWord = 'والي';
 		
 		
-function isNullOrEmpty(value:string):boolean
+function isNullOrEmpty(value:string, ignoreSpaces:boolean=false):boolean
 {
-	if(value===undefined || value === null || value==="")
-		return true;
-	else
-		return false;
+  if(ignoreSpaces) {
+    value.split(' ').join('');
+  }
+  return value === null || value === '';
 }
 
 		/**@desc returns true if there was to many arabic signes there<br>
@@ -208,33 +208,34 @@ function search(str:string="",searchedWord:string="",fineAll:boolean = true,arab
 //////////////////////////////////////////////////link generators↓
 
 /**@desc generate link on the current string and it will returns html text*/
-function generateLinks(str:string="",linkColors:number=-1):string
+function generateLinks(str:string, linkColors:number=-1):string
 {
-	var colorTagStart = '';
-	var colorTagEnd = '';
-	if(linkColors!==-1)
-	{
-		colorTagStart = '<font color="#'+linkColors.toString(16)+'">';
-		colorTagEnd = '</font>';
-	}
-	//debug telephone
+  var colorTagStart:string = '';
+  var colorTagEnd:string = '';
+  if(linkColors!=-1)
+  {
+    colorTagStart = '<font color="#'+linkColors.toString(16)+'">';
+    colorTagEnd = '</font>';
+  }
+  var str:string = str;
+  //debug telephone
 
-	//console.log('phone enabled');
-	var regNumberDetection = /([\n\r\s\t,^])([\d-+]{7,})/gi;//([\n\r\s\t,])([\d-]{8,})([\t\n\r\s,])
-	console.log("Find the phone : "+str);
-	str = str.replace(regNumberDetection,'$1'+colorTagStart+'<a href="tel:$2">$2</a>'+colorTagEnd);//
-
-	var regURLDetect = /(www|http:\/\/)[^ \n\r]*/gi ;///(www\. | http)\S*\s/gi;//TODO it has problem! if you pass an html with href= tag on it, it will break up the complete html
-	str = str.replace(regURLDetect,colorTagStart+'<a href="http://$&">$&</a>'+colorTagEnd);
-	//var regURLDetect2:RegExp = /http\S*\s/gi; 
-	//str = str.replace(regURLDetect2,'<font color="'+linkColors+'"><a href="$&">$&</a></font>');
-	var regDetectEmail = /[a-z.\-1234567890_]*@[a-z.\-_]*/gi ;
-	str = str.replace(regDetectEmail,colorTagStart+'<a href="mailto:$&">$&</a>'+colorTagEnd);
-	
-	var doubleHTTP = /http:\/\/[ ]*http:\/\//gi;
-	str = str.replace(doubleHTTP,'http://');
-	
-	return str ;
+  var regNumberDetection:RegExp = /([\n\r\s\t,^])([\d-+]{7,})/gi;//([\n\r\s\t,])([\d-]{8,})([\t\n\r\s,])
+  console.log("Find the phone : "+str);
+  str = str.replace(regNumberDetection,'$1'+colorTagStart+'<a href="tel:$2">$2</a>'+colorTagEnd);//
+  
+  var regURLDetect:RegExp = /([^"]|^)(www|http[s]?:\/\/)([^\s^\n^\r^<^\]^\[^>^"^']*)/gi ;
+  str = str.replace(/(http[s]?:\/\/)www\./gi,'$1');//Remove extra www
+  str = str.replace(regURLDetect,'<a href="$2$3">$2$3</a>');
+  //var regURLDetect2:RegExp = /http\S*\s/gi;
+  //str = str.replace(regURLDetect2,'<font color="'+linkColors+'"><a href="$&">$&</a></font>');
+  var regDetectEmail:RegExp = /[a-z\.\-1234567890_]*\@[a-z\.\-_]*/gi ;
+  str = str.replace(regDetectEmail,colorTagStart+'<a href="mailto:$&">$&</a>'+colorTagEnd);
+  
+  var doubleHTTP:RegExp = /http:\/\/[ ]*http:\/\//gi;
+  str = str.replace(doubleHTTP,'http://');
+  
+  return str ;
 }
 
 /**@desc *Clear in line "s in the json values:<br>
@@ -513,11 +514,21 @@ function removeNumberFromBegining(str:string=""):string
 ////////////////////////////String controll
 
 /**@desc Returns true if this was an email*/
-function isEmail(email:string=""):boolean
+function isEmail(email:string="", canBeEmpty_p:boolean=false):boolean
 {
-	var reg = /^[\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
-	return reg.test(email);
+  if(canBeEmpty_p)
+  {
+    if(email === ''|| email === null) return true
+  }
+  if( isPersian(email) )
+  {
+    return false ;
+  }
+
+  var reg:RegExp = /^[\w.-]+@\w[\w.-]+\.[\w.-]*[a-z][a-z]$/i;
+  return reg.test(email);
 }
+
 
 /**@desc Returns sized html text*/
 function makeHTMLWithSize(pureHML:string="", defaultFontSize:number=0):string
@@ -654,23 +665,23 @@ function returnLasNumberPartInInteger(str:string=""):number
 /**@desc Creats color from a link*/
 function stringToColor(str:string=""):number
 {
-	var col = 0 ;
-	for(var i = 0 ; i<str.length ; i++)
+	var col:number = 0 ;
+	for(var i:number = 0 ; i<str.length ; i++)
 	{
 		col+=str.charCodeAt(i)*17.7589894;
 	}
 	//console.log("col : "+col);
-	var lastCol = col%10 ;
-	var maxRedColor = (lastCol<=3)?0xac0:10 ;
-	var maxGreenColor = (lastCol>3 && lastCol<=6)?0xc0:10 ;
-	var maxBlueColor = (lastCol>6)?0xc0:10 ;
+	var lastCol:number = col%10 ;
+	var maxRedColor:number = (lastCol<=3)?0xac0:10 ;
+	var maxGreenColor:number = (lastCol>3 && lastCol<=6)?0xc0:10 ;
+	var maxBlueColor:number = (lastCol>6)?0xc0:10 ;
 	//console.log("maxRedColor : "+maxRedColor)
 	//console.log("maxGreenColor : "+maxGreenColor)
 	//console.log("maxBlueColor : "+maxBlueColor)
 	
-	var red = (lastCol*87789.15484848)%maxRedColor+0x40;
-	var gre = (lastCol*55.15641498)%maxGreenColor+0x40;
-	var blu = (lastCol*99.3894516)%maxBlueColor+0x40;
+	var red:number = (lastCol*87789.15484848)%maxRedColor+0x40;
+	var gre:number = (lastCol*55.15641498)%maxGreenColor+0x40;
+	var blu:number = (lastCol*99.3894516)%maxBlueColor+0x40;
 	//console.log("red : "+red.toString(16));
 	//console.log("gre : "+gre.toString(16));
 	//console.log("blu : "+blu.toString(16));
@@ -682,11 +693,14 @@ function stringToColor(str:string=""):number
 
 
 /**@desc Remove spaces from two side of the inputed string : "   hello world  " > "hello world" */
-function removeSpacesFromTwoSides(str:string=""):string
+function removeSpacesFromTwoSides(str:string=""):string | null
 {
-	str = str.replace(/[\s]+$/g,'');
-	str = str.replace(/^[\s]+/g,'');
-	return str ;
+  if(str === null) {
+    return null;
+  }
+  str = str.replace(/[\s\t\n\r]+$/g,'');
+  str = str.replace(/^[\s\t\n\r]+/g,'');
+  return str ;
 }
 
 /**@desc Returning file size in String with lable*/
@@ -712,6 +726,72 @@ function fileSizeInString(fileSizeInByte:number=0):string
 	{
 		return Math.round(fileSizeInByte/(1000*1000*1000))+' G';
 	}
+}
+
+function removeCurrancyPrint(inputcurencynumber:any):string
+{
+  var lengthCharchters:number = String(inputcurencynumber).length;
+  inputcurencynumber = String(inputcurencynumber);
+  for(var i:number = 0;i<lengthCharchters;i++)
+  {
+    if(String(inputcurencynumber).charAt(i) === ',')
+    {
+      inputcurencynumber = String(inputcurencynumber).replace(",","");
+    }
+  }
+  return inputcurencynumber;
+}
+
+function makeRandomNum(str:string, seed:number):number {
+  var randomSeed:number = 0 ;
+  
+  for(var i:number=0; i<str.length ; i++)
+  {
+    randomSeed += str.charCodeAt(i) ;
+  }
+  var max:number;
+  switch(seed)
+  {
+    case 1:
+      max = 135;
+      break;
+    case 2:
+      max = 456;
+      break;
+    case 3:
+      max = 984;
+      break;
+    default:
+      max = 844
+      break;
+  }
+  randomSeed = (randomSeed%max)/max;
+  return randomSeed;
+}
+
+function isPhoneNumber(str:string):boolean
+{
+  return str.match(/((\+98|[0]{1,2}98)|0)[\d]{8,12}/) !== null;
+}
+
+function removeReservedChar(str:string, joinChar:string='_'):string
+{
+  return str.split('?').join(joinChar).split('"').join(joinChar).split('|').join(joinChar).split(':').join(joinChar).split('*').join(joinChar).split('<').join(joinChar).split('>').join(joinChar).split('/').join(joinChar).split('\/').join(joinChar);
+}
+
+function randomString(len:number):string
+{
+  var key:string = '' ;
+  var keyvalues:string = '';
+  keyvalues += "abcdefghijklmnopqrstuvwxyz";
+  keyvalues += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  keyvalues += "1234567890";
+  var keyvaluesLenght:number = keyvalues.length ;
+  for(var i:number = 0 ; i<len ; i++)
+  {
+    key += keyvalues.charAt(Math.floor(Math.random()*keyvaluesLenght));
+  }
+  return key;
 }
 
 export default StringFunctions ;

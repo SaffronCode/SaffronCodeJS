@@ -1,5 +1,6 @@
 import {Preloader,PreloaderModul} from './ui/PreLoader';
 import Input from './ui/Input';
+import TagForInput from './ui/TagForInput';
 //import StringFunctions from './libs/StringFunctions';
 import * as React from 'react';
 import EventDispatcher from './framework/EventDispatcher';
@@ -14,12 +15,14 @@ import Encode from './libs/Encode';
 
 interface uiModel{
     Preloader:PreloaderModul,
-    Input:typeof Input
+    Input:typeof Input,
+    TagForInput: typeof TagForInput
 }
 
 var ui:uiModel = {
     Preloader:Preloader,
-    Input:Input
+    Input:Input,
+    TagForInput: TagForInput
 };
 
 
