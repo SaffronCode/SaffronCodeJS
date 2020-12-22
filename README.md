@@ -33,6 +33,29 @@ to use inside a react app:<br>
 ```
 <br>
 
+<img src="https://github.com/SaffronCode/SaffronCodeJS/blob/master/doc/englishTextArea.PNG" alt="example" />
+<br>
+<img src="https://github.com/SaffronCode/SaffronCodeJS/blob/master/doc/farsiTextarea.PNG" alt="example" />
+<br>
+<img src="https://github.com/SaffronCode/SaffronCodeJS/blob/master/doc/inputEnglsh.PNG" alt="example" />
+<br>  
+<img src="https://github.com/SaffronCode/SaffronCodeJS/blob/master/doc/inputFarsi.PNG" alt="example" />
+<br>
+<img src="https://github.com/SaffronCode/SaffronCodeJS/blob/master/doc/selectFarsi.PNG" alt="example" />
+<br>
+
+Properties:
+
+rtl : boolean ---> whether the tagName should be on left corner or right -- default is false
+<br>
+tagName: string ---> the tag title 
+<br>
+tagBackGround: string ---> the background color of the tag span -- default is white
+<br>
+tagColor: string ---> tagName color -- default is black
+<br>
+
+
 ## libs
 Pure JS functions and classes<br/>
 `import {libs} from 'saffroncodejs'`
