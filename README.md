@@ -23,6 +23,7 @@ this component displayes a tag name on top corner of the input element passed to
 (as a child component)
 <br>
 **the element can be an input, a textArea or a select input
+<br>
 **supports rtl and ltr direction
 <br>
 to use inside a react app:<br>
@@ -39,8 +40,6 @@ to use inside a react app:<br>
 <br>
 <img src="https://github.com/SaffronCode/SaffronCodeJS/blob/master/doc/inputEnglsh.PNG" alt="example" />
 <br>  
-<img src="https://github.com/SaffronCode/SaffronCodeJS/blob/master/doc/inputFarsi.PNG" alt="example" />
-<br>
 <img src="https://github.com/SaffronCode/SaffronCodeJS/blob/master/doc/selectFarsi.PNG" alt="example" />
 <br>
 
