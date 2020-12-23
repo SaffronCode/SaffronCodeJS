@@ -74,7 +74,7 @@ to use inside a react app:<br>
 
 
 <br>
-***Notice that the divs you pass this component, should have a class and the class can be named and styled as you wish***
+***Notice that the divs you pass to this component, should have a class and the class can be named and styled as you wish***
 <br>
 <br>
 Properties:
