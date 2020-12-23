@@ -1,0 +1,23 @@
+.saffronJsSlider-13 {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  padding: 10px 0 15px 0;
+  margin: 0 20px 0 40px;
+  display: flex;
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+.saffronJsSlider-13::-webkit-scrollbar {
+  display: none;
+}
+
+.saffronJsSlider-13::after {
+  content: '';
+  border-left: 20px solid transparent; 
+}
+
+.saffronJsSlider-13 div{
+  flex-shrink: 0;
+  flex-grow: 0;
+}

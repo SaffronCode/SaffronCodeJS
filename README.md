@@ -1,7 +1,7 @@
 <p align="center"><img alt="Saffron React" src="https://github.com/SaffronCode/SaffronCode-React/blob/master/doc/152.png?raw=true"/></p>
 
 <p align="center">Package of graphical and non graphical libraries for React developers such as Canvas preloader and Regex functions.</p>
-<p align="center"><a href="https://github.com/SaffronCode/SaffronCodeJS/stargazers">(<bold>Support us with your stars on <bold><img src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Logo.png" width="50px"/>)</a></p>
+<p align="center"><a href="https://github.com/SaffronCode/SaffronCodeJS/stargazers">(<bold>Support us with your stars on Github <bold>)</a></p>
 
 `npm install saffroncodejs`
 
@@ -53,7 +53,38 @@ tagBackGround: string ---> the background color of the tag span -- default is wh
 <br>
 tagColor: string ---> tagName color -- default is black
 <br>
+<br>
+### ItemSlider
+<br>
+this component is a slider for the cards (or divs with your own design) you pass to it.
+<br>
 
+[DEMO](https://codesandbox.io/s/saffron-slider-5tyce?file=/src/App.js:130-679)
+
+<br>
+```
+<ui.ItemsSlider rtl id="slider1">
+ <div className="item"></div>
+ <div className="item"></div>
+ <div className="item"></div>
+ .
+ .
+ .
+ .
+ <div className="item"></div>
+</ui.ItemsSlider>
+
+```
+<br>
+***Notice that the divs you pass this component, should have a class and the class can be named and styled as you wish***
+<br>
+<br>
+Properties:
+<br>
+id : string ---> this is the identifier that enables navigation button scrolling
+<br>
+rtl : boolean ---> whether the tagName should be on left corner or right -- default is false
+<br>
 
 ## libs
 Pure JS functions and classes<br/>
