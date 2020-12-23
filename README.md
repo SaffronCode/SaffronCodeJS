@@ -59,7 +59,7 @@ tagColor: string ---> tagName color -- default is black
 this component is a slider for the cards (or divs with your own design) you pass to it.
 <br>
 
-[DEMO](https://codesandbox.io/s/saffron-slider-5tyce?file=/src/App.js:130-679)
+[DEMO](https://codesandbox.io/s/saffron-slider-5tyce?file=/src/App.js:130-679){:target="_blank"}
 <br>
 to use inside a react app:<br>
 ```
