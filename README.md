@@ -58,14 +58,9 @@ tagColor: string ---> tagName color -- default is black
 <br>
 this component is a slider for the cards (or divs with your own design) you pass to it.
 <br>
-
 <a
   href="https://codesandbox.io/s/saffron-slider-5tyce?file=/src/App.js:130-679"
-  target="_blank">
-DEMO
-</a>
-
-<br>
+  target="_blank">DEMO</a><br>
 to use inside a react app:<br>
 ```
 <ui.ItemsSlider rtl id="slider1">
