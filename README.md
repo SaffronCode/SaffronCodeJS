@@ -60,8 +60,8 @@ this component is a slider for the cards (or divs with your own design) you pass
 <br>
 
 [DEMO](https://codesandbox.io/s/saffron-slider-5tyce?file=/src/App.js:130-679)
-
 <br>
+to use inside a react app:<br>
 ```
 <ui.ItemsSlider rtl id="slider1">
  <div className="item"></div>
@@ -70,6 +70,8 @@ this component is a slider for the cards (or divs with your own design) you pass
  <div className="item"></div>
 </ui.ItemsSlider>
 ```
+<br>
+
 
 <br>
 ***Notice that the divs you pass this component, should have a class and the class can be named and styled as you wish***
