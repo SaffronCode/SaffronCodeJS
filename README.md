@@ -67,14 +67,10 @@ this component is a slider for the cards (or divs with your own design) you pass
  <div className="item"></div>
  <div className="item"></div>
  <div className="item"></div>
- .
- .
- .
- .
  <div className="item"></div>
 </ui.ItemsSlider>
-
 ```
+
 <br>
 ***Notice that the divs you pass this component, should have a class and the class can be named and styled as you wish***
 <br>
