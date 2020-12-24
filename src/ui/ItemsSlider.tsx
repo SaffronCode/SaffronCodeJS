@@ -15,21 +15,80 @@ export default class ItemsSlider extends Component<ItemSliderProps> {
     nextDisable: false
   }
 
+  componentDidMount() {
+    let divToScroll:any = document.querySelector(`#${this.props.id}`);
+    let isDown:boolean = false;
+    let start:number;
+    let scrollLeft:number;
+
+    // add code to add event listeners to div only when we have id
+    // and only add them once
+    if(divToScroll) {
+      this.checkForDisabled(divToScroll);
+      
+      const setIsDownFalse = () => {
+        isDown = false;
+      }
+  
+      const mouseDownHandler = (e:MouseEvent) => {
+        isDown = true;
+        start = e.pageX;
+        scrollLeft = divToScroll.scrollLeft;
+      } 
+  
+      const mouseMoveHandler = (e:MouseEvent) => {
+        if(isDown) {
+          e.preventDefault();
+          const x = e.pageX;
+          const walk = x - start;
+          divToScroll.scrollLeft = scrollLeft - walk; 
+        }
+      }
+        
+      divToScroll.addEventListener('mousedown', mouseDownHandler);
+
+      divToScroll.addEventListener('mouseup', setIsDownFalse);
+
+      divToScroll.addEventListener('mouseleave', setIsDownFalse);
+
+      divToScroll.addEventListener('mousemove', mouseMoveHandler);
+    }
+
+  }
+
   // check if the next and before buttons should be disabled
   // only works for rtl
   checkForDisabled = (divToScroll:any) => {
+
+    if( this.props.rtl ) {
+
+      if(divToScroll.scrollLeft >= 0) {
+        this.setState({ beforeDisable: true, nextDisable: false });
+      }
   
+      if(divToScroll.scrollLeft < 0){
+        this.setState({ beforeDisable: false, nextDisable: false });
+      } 
+  
+      if(( Math.abs(divToScroll.scrollLeft) + divToScroll.clientWidth + 20 ) >= divToScroll.scrollWidth ) {
+        this.setState({ nextDisable: true });
+      }
+      
+      return;
+    }
+
     if(divToScroll.scrollLeft >= 0) {
       this.setState({ beforeDisable: true, nextDisable: false });
     }
 
-    if(divToScroll.scrollLeft < 0){
+    if(divToScroll.scrollLeft > 0){
       this.setState({ beforeDisable: false, nextDisable: false });
     } 
 
-    if(( Math.abs(divToScroll.scrollLeft) + divToScroll.clientWidth + 20 ) >= divToScroll.scrollWidth ) {
+    if(( Math.abs(divToScroll.scrollLeft) + divToScroll.clientWidth ) >= divToScroll.scrollWidth ) {
       this.setState({ nextDisable: true });
     }
+
   }
 
   // set interval for scroll (to add animation)
@@ -42,7 +101,7 @@ export default class ItemsSlider extends Component<ItemSliderProps> {
 
       if( count === 50 ) {
         clearInterval(scrollInterval);
-        if( this.props.rtl ) this.checkForDisabled(divToScroll);
+        this.checkForDisabled(divToScroll);
       }
     }, 10)
 
@@ -51,8 +110,11 @@ export default class ItemsSlider extends Component<ItemSliderProps> {
   scrollTo = (e:any, direction:string) => {
 
     let divToScroll = document.querySelector(`#${this.props.id}`);  
-
     let navDirections = (this.props.rtl) ? [5, -5] : [-5, 5];
+
+    if(!divToScroll) {
+      return;
+    }
 
     switch(direction) {
       case 'next':
