@@ -146,14 +146,15 @@ export default class ItemsSlider extends Component<ItemSliderProps> {
       position: "relative"
     }
 
-    const top = (this.props.top) ? this.props.top : '39%';
+    const top = (this.props.top) ? { top: this.props.top } :
+      { top: "50%", transform: "translate(0%,-50%)" };
 
     const navButtonsStyle:object = {
       position: "absolute",
       width: "100%",
       display: "flex",
       justifyContent: "space-between",
-      top,
+      ...top,
       left: "0"
     }
 

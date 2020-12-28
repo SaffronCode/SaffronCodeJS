@@ -13,9 +13,16 @@
 1- Set the Preloader color,size and animation speed once in index.js ui.Preloader.setUp("#777777ff",200,200,0.2) <br/>
 2- and then use it every where like below: <ui.Preloader/> ☺
 
+<br>
+<br>
+
 ### Input
 
 This is just like html input tag but it has better control on patterns and it will correct the user's mismatches character
+
+
+<br>
+<br>
 
 ### TagForInput
 
@@ -54,6 +61,10 @@ tagBackGround: string ---> the background color of the tag span -- default is wh
 tagColor: string ---> tagName color -- default is black
 <br>
 <br>
+
+<br>
+<br>
+
 ### ItemSlider
 <br>
 this component is a slider for the cards (or divs with your own design) you pass to it.
@@ -82,6 +93,14 @@ Properties:
 id : string ---> this is the identifier that enables navigation button scrolling
 <br>
 rtl : boolean ---> whether the tagName should be on left corner or right -- default is false
+<br>
+color : string ---> color for the navigation buttons -- default is black
+<br>
+fontSize: string ---> font size of the navigation buttons -- default is 20px
+<br>
+top: string ---> the position of the navigation buttons from top of the container 
+
+<br>
 <br>
 
 ## libs
