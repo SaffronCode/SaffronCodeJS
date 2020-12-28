@@ -1,11 +1,18 @@
 import React, { Component } from 'react'
-
 import './ItemsSlider.css';
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faChevronLeft,
+  faChevronRight
+} from "@fortawesome/free-solid-svg-icons";
 interface ItemSliderProps {
   children: React.ReactNode,
   id: string,
-  rtl: boolean
+  rtl: boolean,
+  top: string,
+  fontSize: string,
+  color: string
 }
 
 export default class ItemsSlider extends Component<ItemSliderProps> {
@@ -139,32 +146,34 @@ export default class ItemsSlider extends Component<ItemSliderProps> {
       position: "relative"
     }
 
+    const top = (this.props.top) ? this.props.top : '39%';
+
     const navButtonsStyle:object = {
       position: "absolute",
       width: "100%",
       display: "flex",
       justifyContent: "space-between",
-      top: "39%",
+      top,
       left: "0"
+    }
+
+    const fontSize = (this.props.fontSize) ? this.props.fontSize : '20px';
+
+    const iconsFontSize:object = {
+      fontSize,
+      cursor: 'pointer' 
     }
 
     return (
       <div>
         <div style={sliderContainer}>
           <div className="saffronJsSlider-13" id={this.props.id}>
+            
             {this.props.children}
+            
             <div style={navButtonsStyle}>
-              <button
-                disabled={this.state.beforeDisable}
-                onClick={(e) => this.scrollTo(e, "before")}
-              >
-                before
-              </button>
-              <button
-                disabled={this.state.nextDisable}
-                onClick={(e) => this.scrollTo(e, "next")}>
-                next
-              </button>
+              <FontAwesomeIcon color={(this.state.beforeDisable) ? '#777777' : this.props.color} style={iconsFontSize} icon={(this.props.rtl) ? faChevronRight : faChevronLeft} onClick={(e) => this.scrollTo(e, "before")} />
+              <FontAwesomeIcon color={(this.state.nextDisable) ? '#777777' : this.props.color} style={iconsFontSize} icon={(this.props.rtl) ? faChevronLeft : faChevronRight} onClick={(e) => this.scrollTo(e, "next")} />
             </div>
           </div>
         </div>

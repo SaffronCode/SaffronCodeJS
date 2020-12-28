@@ -1,6 +1,6 @@
 {
 	"name": "saffroncodejs",
-	"version": "1.8.4",
+	"version": "1.9.3",
 	"description": "Package of optimised react components and javascript functions for developers ♫♪",
 	"main": "./lib/SaffronCode.js",
 	"types": "./lib/SaffronCode.d.ts",
@@ -8,8 +8,8 @@
 		"doc": "doc"
 	},
 	"scripts": {
-    "build": "rmdir lib /s /q && tsc",
-    "copy-files": "cp ./src/ ./dist/",
+		"build": "rmdir lib /s /q && tsc",
+		"copy-files": "cp ./src/ ./dist/",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"repository": {
@@ -49,7 +49,10 @@
 		"ReactRouter",
 		"framework",
 		"EventDispatcher",
-		"ActionScript"
+		"ActionScript",
+		"ReactItemSlider",
+		"ReactSlider",
+		"ReactTagInput"
 	],
 	"author": "SaffronCode Co <ebrahimsepehr@gmail.com>",
 	"license": "MIT",
@@ -58,6 +61,9 @@
 	},
 	"homepage": "https://github.com/SaffronCode/SaffronCodeJS#readme",
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.32",
+		"@fortawesome/free-solid-svg-icons": "^5.15.1",
+		"@fortawesome/react-fontawesome": "^0.1.14",
 		"@types/react": "^16.14.2",
 		"@types/react-dom": "^16.9.10",
 		"npm": "^6.14.10",
