@@ -12,7 +12,8 @@ interface ItemSliderProps {
   rtl: boolean,
   top: string,
   fontSize: string,
-  color: string
+  color: string,
+  noNavButtons: boolean
 }
 
 export default class ItemsSlider extends Component<ItemSliderProps> {
@@ -152,10 +153,10 @@ export default class ItemsSlider extends Component<ItemSliderProps> {
     const navButtonsStyle:object = {
       position: "absolute",
       width: "100%",
-      display: "flex",
+      display: (!this.props.noNavButtons) ? "flex" : "none",
       justifyContent: "space-between",
       ...top,
-      left: "0"
+      left: "0",
     }
 
     const fontSize = (this.props.fontSize) ? this.props.fontSize : '20px';

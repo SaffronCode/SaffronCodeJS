@@ -99,6 +99,8 @@ color : string ---> color for the navigation buttons -- default is black
 fontSize: string ---> font size of the navigation buttons -- default is 20px
 <br>
 top: string ---> the position of the navigation buttons from top of the container 
+<br>
+noNavButtons: boolean ---> display or don't display Navigation Buttons -- default is false(display)
 
 <br>
 <br>
