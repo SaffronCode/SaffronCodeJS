@@ -1,6 +1,6 @@
 {
 	"name": "saffroncodejs",
-	"version": "1.9.7",
+	"version": "1.9.9",
 	"description": "Package of optimised react components and javascript functions for developers ♫♪",
 	"main": "./lib/SaffronCode.js",
 	"types": "./lib/SaffronCode.d.ts",
@@ -8,7 +8,8 @@
 		"doc": "doc"
 	},
 	"scripts": {
-		"build": "rmdir lib /s /q && tsc",
+    "build": "rmdir lib /s /q && tsc",
+    "buildLinux": "rm -rf lib /s /q && tsc",
 		"copy-files": "cp ./src/ ./dist/",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},

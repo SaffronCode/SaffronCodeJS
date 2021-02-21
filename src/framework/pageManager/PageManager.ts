@@ -12,6 +12,7 @@ interface PageManagerModel {
     PAGE_CHANGED:string,
     routerParamList:string,
     changePage:typeof changePage,
+    changePageURL:typeof changePageURL,
     decodePageParams:typeof decodePageParams,
     getCurrentPage:typeof getCurrentPage,
     registerPage:typeof registerPage,
@@ -23,6 +24,7 @@ var PageManager:PageManagerModel = {
     PAGE_CHANGED : "PAGE_CHANGED",
     routerParamList:'',
     changePage:changePage,
+    changePageURL:changePageURL,
     decodePageParams:decodePageParams,
     getCurrentPage:getCurrentPage,
     registerPage:registerPage,
@@ -43,6 +45,25 @@ function registerPage(page:PageData):void
 }
 
 var cashedLastPage = new PageData();
+
+function changePageURL(targetPage:PageData,pageData:any[]=[]):string
+{
+    if(targetPage!==null)
+    {
+        cashedLastPage = JSON.parse(JSON.stringify(targetPage)) ;
+        for(var i = 0 ; i<pageData.length ; i++)
+        {
+            if(pageData[i]===undefined || pageData[i]===null || pageData[i]==='')
+            {
+                pageData[i] = '~';
+            }
+            cashedLastPage.url += '/'+encodeURIComponent(pageData[i]) ;
+        }
+        return cashedLastPage.url ;
+    }
+    return '.';
+}
+
 
 function changePage(targetPage:PageData,pageData:any[]=[]):void
 {
