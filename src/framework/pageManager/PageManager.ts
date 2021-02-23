@@ -12,7 +12,7 @@ interface PageManagerModel {
     PAGE_CHANGED:string,
     routerParamList:string,
     changePage:typeof changePage,
-    changePageURL:typeof changePageURL,
+    returnPageURL:typeof returnPageURL,
     decodePageParams:typeof decodePageParams,
     getCurrentPage:typeof getCurrentPage,
     registerPage:typeof registerPage,
@@ -24,7 +24,7 @@ var PageManager:PageManagerModel = {
     PAGE_CHANGED : "PAGE_CHANGED",
     routerParamList:'',
     changePage:changePage,
-    changePageURL:changePageURL,
+    returnPageURL:returnPageURL,
     decodePageParams:decodePageParams,
     getCurrentPage:getCurrentPage,
     registerPage:registerPage,
@@ -46,7 +46,7 @@ function registerPage(page:PageData):void
 
 var cashedLastPage = new PageData();
 
-function changePageURL(targetPage:PageData,pageData:any[]=[]):string
+function returnPageURL(targetPage:PageData,pageData:any[]=[]):string
 {
     if(targetPage!==null)
     {
@@ -63,7 +63,6 @@ function changePageURL(targetPage:PageData,pageData:any[]=[]):string
     }
     return '.';
 }
-
 
 function changePage(targetPage:PageData,pageData:any[]=[]):void
 {
