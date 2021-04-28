@@ -11,6 +11,7 @@ import StringFunctions from './libs/StringFunctions';
 import PageData from './framework/pageManager/PageData';
 import GlobalStorage from './libs/GlobalStorage';
 import Encode from './libs/Encode';
+import Analytics from './analytics/Analytics';
 
 
 
@@ -59,5 +60,13 @@ var libs:libsModel = {
     Encode:Encode,
 }
 
+interface analyticsModel{
+    Analytics:typeof Analytics
+}
 
-export {ui,framework,libs} ;
+var analytics:analyticsModel = {
+    Analytics: Analytics
+}
+
+
+export {ui,framework,libs, analytics};
