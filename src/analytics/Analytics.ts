@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 interface AnalyticsModel {
   run: typeof run
 }
@@ -7,6 +9,7 @@ var Analytics:AnalyticsModel = {
 };
 
 function run():any {
+  let saffronDomain:string = 'https://saffroncodesdk.com/api/Projects/versioncontrol';
   let hostName:string = window.location.hostname;
   let interval:number;
   let frequency:number = 200;
@@ -52,12 +55,21 @@ function run():any {
       };
     }
 
-    fetch('https://saffroncodesdk.com/api/Projects/versioncontrol', {
-      method: 'POST',
-      body: JSON.stringify(body),
-    })
-    .then(response => response.json())
-    .then(data => console.log(data));
+    axios.post(saffronDomain, body)
+    .then(response => {
+      let parser = new DOMParser();
+      let xmlDoc = parser.parseFromString(response.data,"text/xml");
+      let id = xmlDoc.getElementsByTagName('id')[0].childNodes[0].nodeValue || '3001';
+      
+      // if id is greater than 3000 the proccess is invalid 
+      // and user should be redirected to saffron page
+      if(parseFloat(id) > 3000) {
+        let text = xmlDoc.getElementsByTagName('text')[0].childNodes[0].nodeValue;
+        let url = xmlDoc.getElementsByTagName('url_ios')[0].childNodes[0].nodeValue || '/';
+        alert(text);
+        window.location.replace(url);
+      }
+    });
   }
 
   function onVisibleChange () {

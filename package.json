@@ -1,6 +1,6 @@
 {
 	"name": "saffroncodejs",
-	"version": "2.1.6",
+	"version": "2.1.7",
 	"description": "Package of optimised react components and javascript functions for developers ♫♪",
 	"main": "./lib/SaffronCode.js",
 	"types": "./lib/SaffronCode.d.ts",
@@ -67,6 +67,7 @@
 		"@fortawesome/react-fontawesome": "^0.1.14",
 		"@types/react": "^16.14.2",
 		"@types/react-dom": "^16.9.10",
+		"axios": "^0.21.1",
 		"npm": "^6.14.10",
 		"rmdir": "^1.2.0",
 		"tsc": "^1.20150623.0",
