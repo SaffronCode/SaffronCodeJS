@@ -15,7 +15,7 @@ function run():any {
   let frequency:number = 200;
 
   // set up interval and send api call on initialization
-  setAnalyticInterval();
+  // setAnalyticInterval();
   sendApiRequest();
 
   document.addEventListener("visibilitychange", onVisibleChange);
@@ -79,11 +79,11 @@ function run():any {
 
     let isHidden:boolean = document.hidden;
     if(isHidden) {
-      clearInterval(interval);
+      // clearInterval(interval);
       return;
     }
-    clearInterval(interval);
-    setAnalyticInterval();
+    // clearInterval(interval);
+    // setAnalyticInterval();
     sendApiRequest();
 
     // console.log(document.hidden, 'isHidden', document.visibilityState, 'state');
