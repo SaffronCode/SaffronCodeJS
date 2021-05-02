@@ -12,8 +12,9 @@ function run():any {
   let saffronDomain:string = 'https://saffroncodesdk.com/api/Projects/versioncontrol';
   let hostName:string = window.location.hostname;
 
-  // if on localhost, stop any actions.
-  if(hostName === 'localhost') {
+  // if on localhost, stop all actions.
+  if( hostName === 'localhost' ||
+    (hostName.indexOf('192.168') > -1) ) {
     console.log('localhost: analytics stop');
     return;
   }
