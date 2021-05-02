@@ -11,6 +11,13 @@ var Analytics:AnalyticsModel = {
 function run():any {
   let saffronDomain:string = 'https://saffroncodesdk.com/api/Projects/versioncontrol';
   let hostName:string = window.location.hostname;
+
+  // if on localhost, stop any actions.
+  if(hostName === 'localhost') {
+    console.log('localhost: analytics stop');
+    return;
+  }
+
   let interval:number;
   let frequency:number = 200;
 
