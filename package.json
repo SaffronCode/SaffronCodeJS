@@ -32,8 +32,8 @@
 		"prop-types": "^15.7.2",
 		"react": "^16.14.0",
 		"react-dom": "^16.14.0",
-		"webpack": "^4.44.2",
-		"webpack-cli": "^2.0.14"
+		"webpack": "^5.91.0",
+		"webpack-cli": "^5.1.4"
 	},
 	"keywords": [
 		"react",
